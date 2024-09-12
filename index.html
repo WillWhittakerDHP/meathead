@@ -5,12 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>Document</title>
+  <title>Meathead: Be strong!</title>
 </head>
 <body>
-  
+  <header>
+    <h1>Meathead</h1>
+    <nav>
+      <ul>  
+        <li><p>Home</p></li>
+        <li><a href="">First Week</a></li>
+        <li><a href="">Second Week</a></li>
+        <li><a href="">Third Week</a></li>
+        <li><a href="">Fourth Week</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="hero-banner">
+    <div>
+      <h2>Strength Takes Work</h2>
+    </div>
+  </div>
+  <main class="page-wrapper">
+    <div class="page-section">
+      <aside class="intro">
+        <h2>Welcome to Meathead</h2>
+        <p>It takes heavy lifting, but your goals are within your capabilities!</p>
+        <p>Let's talk about who you are and what you home to accomplish so we can start planning for the next month of work at the gym</p>
+      </aside>
+      <section class="flex-container">
+        <form class="card" class ="flex-item" id="personal-info">
+          <h2>Who are you?</h2>
+          <ul>
+            <li>
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" />
+            </li>
+            <li>
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" />
+            </li>
+            <li>
+              <label for="weight">Weight</label>
+              <input type="text" id="weight" name="weight" />
+            </li>
+          </ul>
+        </form>
+        <form class="card"  class="flex-item" id="personal-goals">
+          <h2>What are your goals?</h2>
+          <ul>
+            <li>
+              <label for="muscle-group">Muscle Group</label>
+              <input type="checkbox" id="muscle-group" name="muscle-group" />
+            </li>
+            <li>
+              <label for="split">Number of Days You Can go to the Gym in a Week</label>
+              <input type="checkbox" id="split" name="split" />
+            </li>
+            <li>
+              <label for="accessory-exercises">Accessory Exercises</label>
+              <input type="checkbox" id="accessory-exercises" name="accessory-exercises" />
+            </li>
+          </ul>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <p>Made with Love by "We Deserve An A" 2024</p>
 </body>
-<script src="script.js"></script>
+<script src="assets/js/landingScript.js"></script>
 </html>
 
 <!-- Landing page
@@ -29,12 +92,13 @@
       !we need "ul" for the input fields 
         !we need an "li" textbox for username
         !we need an "li" checkbox for muscle group selection
-          we need an "li" checkbox for accessory exercises
+        we need an "li" checkbox for accessory exercises
         we need an "li" calendar date picker
         we need an "li" checkbox for number of days in a split
         we need an "li" textbox for weight inputs
       !we need to push inputs to local storage
   we need a footer with the author's name and the current year
+  !we need images with "alt" tags
 
 First Week Page
   !we need an html body section
