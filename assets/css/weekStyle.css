@@ -1,0 +1,23 @@
+.dropdown-menu{
+  /* I don't know how to edit variables for bootstrap!*/
+  --dropdown-link-active-color: rgba(68, 88, 119, 1);
+  --dropdown-link-active-bg: rgba(68, 88, 119, 1);
+}
+
+
+
+.button
+{
+  justify-content: right;
+}
+
+p
+{
+    display: inline-block;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00b3db;
+  border-color: #285e8e; /*set the color you want here*/
+}
