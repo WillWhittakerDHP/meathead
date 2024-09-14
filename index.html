@@ -83,7 +83,16 @@
 </body>
 </html>
 
-<!-- Landing page
+<!-- 
+
+UserStory
+
+AS A USER, I need specific advice on how to get stronger on big gym lifts
+XXXXXXXXXXXXI want to be able to input my personal information and goals so that I can get a workout plan that is tailored to my needs.
+SO THAT I can get the most out of my time at the gym
+
+
+Landing page
 !we need an html body section
   we need an html hero image
   !we need a header 
@@ -94,16 +103,47 @@
       !we need a "h2" title
       we need a greeting message "p"
       we need a instructions "p"
-    !we need a form to collect persistent data
+    !we need a two form cards to collect persistent data
       we need a "h2" title
-      !we need "ul" for the input fields 
-        !we need an "li" textbox for username
-        !we need an "li" checkbox for muscle group selection
-        we need an "li" checkbox for accessory exercises
-        we need an "li" calendar date picker
-        we need an "li" checkbox for number of days in a split
-        we need an "li" textbox for weight inputs
-      !we need to push inputs to local storage
+      !we need "ul" for the input cards
+        !we need one card for personal info
+          the personal info card will need a "ul" for the following fields:
+            !we need an "li" textbox for the userName
+              userName be preventDefaulted
+              userName must validate for letters only and clip
+            !we need an "li" list of possible numbers of days in a split labeled "days available each week"
+              each day number (3, 4, or 5) should have a checkbox
+              when the checkbox is clicked, the splitDesign will be selected
+              when the checkbox is clicked the selected text with stay dark and the rest of the options will grey out
+        !we need one card for goals info
+          the goals info card will need a "ul" for the following fields:
+          !we need an "li" that lists muscle group names for muscleGroup selection
+            each muscle group name should have a checkbox
+              when the checkbox is clicked, the muscleGroup will be selected
+              when the checkbox is clicked the selected text with stay dark and the rest of the options will grey out
+              when the checkbox is clicked the accessory exercise field will populate with the accessory exercises for the selected muscle group
+          we need an "li" textbox for oneRepMax inputs
+            oneRepMax must be preventDefaulted
+            enoRepMax must validate for numbers only and clip to 3 digits
+      !we need a submit button 
+        the button needs to validate that all fields are complete
+        !the button needs to push userName, muscleGroup, splitDesign, and oneRepMax into local storage
   we need a footer with the author's name and the current year
   !we need images with "alt" tags
+
+arrays and objects to be pushed to local storage
+  userName will be an array with the following properties:
+    the name of the user
+  muscleGroup will be an array with the following properties:
+    the name of the focus muscle group as focusExercise
+    the on object which is an array accessory exercise names as accessoryExercise
+  splitDesign will be an array with the following properties:
+    the number of days in the split (splitDaysTotal) to determine the number of dayCards
+    an object with the number of sets per day (setsPerDay) to determine the number of setAdvice buttons for each dayCard
+    an object which is an array of timer lengths per day (timerLengthPerDay) to determine the timer length for each dayCard
+    an object which is an array of reps per set per day (repAdvice) for the setAdvice buttons
+    an object which is an array of percentages to be used for weightAdvice for the setAdvice buttons
+  oneRepMax will be an array with the following properties:
+    the one rep max for the focus exercise
+    a value for the accessory exercise weight advice as accessoryExerciseWeightAdvice
 -->
