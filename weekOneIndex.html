@@ -36,17 +36,18 @@
 
 <!--
 First Week Page
-  !we need to pull userName, splitChoice, and oneRepMax out of local storage
+  !we need to pull userName, muscleGroup, splitDesign, and oneRepMax out of local storage
     userName will be used in the header
-    splitChoice will be used to select a splitDesign object from a splitDesignOptions array
+    muscleGroup will be used to set the focus exercise and accessory exercise on each card
+    splitDesign will be used to select a splitDesign object from a splitDesignOptions array
       each splitDesign object will have the following properties: 
         the number of days in the split (splitDaysTotal) to determine the number of dayCards
-        an object with the number of sets per day (splitSetsPerDay) to determine the number of setAdvice buttons for each dayCard
-        an object which is an array of timer lengths per day (splitTimerLength) to determine the timer length for each dayCard
-        an object which is an array of reps per set per day (repAdvice)
-        an object which is an array of percentages to be used for weightAdvice
-    oneRepMax will be used to calculate the weightAdvice
-    We need a plateMath function to calculate the plateTotals object for the hover-over plate calculator
+        an object with the number of sets per day (setsPerDay) to determine the number of setAdvice buttons for each dayCard
+        an object which is an array of timer lengths per day (timerLengthPerDay) to determine the timer length for each dayCard
+        an object which is an array of reps per set per day (repAdvice) for the setAdvice buttons
+        an object which is an array of percentages to be used for weightAdvice for the setAdvice buttons
+    oneRepMax will be used to calculate the weightAdvice for the setAdvice buttons
+    We need a plateMath function to calculate the plateTotals object for a hover-over plate calculator
   !we need an html body section
     we need an html hero image
   !we need a header 
@@ -57,22 +58,24 @@ First Week Page
       the number of cards (between 3 to 5) will be determined by the splitDaysTotal
       each card needs to following content
         !we need a header field 
-          with an "h2" title showing the day of the week (day 1, day 2, etc)
-          a timer box
-            the timer should be set for a value indexed as part of the split information (ex: 2 minutes on 4x9 days, 45 seconds on 10x3 days)
+          with an "h2" title showing the day of the week (day 1, day 2, etc) on the left side of the field
+          with a timer box on the right side of the field
+            the timer should be set for a value from the splitTimerLength index (ex: 2 minutes on 4x9 days, 45 seconds on 10x3 days)
             the timer should count down to zero
-            the timer should start 5 seconds after each R&W button is pressed (except the last one)
-            the timer should reset to the original value after each R&W button is pressed 
+            the timer should start 5 seconds after each setAdvice button is pressed (except the last one)
+            the timer should reset to the original value after the countdown is pressed 
         !we need a "focus exercise" field
           the top of the field should have an "h3" for exercise advice
-          the field should grey-out when all of the setAdvice buttons are clicked as completed (see below)
           !we need a "ul" for flex-gridded setAdvice buttons used to record the performance of the exercise
-            !we need an "li" for each button
+            !we need an "li" for each button setAdvice button
+              !each button should have an event listener 
+                the listener should grey out the button when clicked 
+                the listener should be prevented from effecting the focus exercise field and card
               the number of buttons will be determined by the number of sets in the splitDesign
               the text content of setAdvice will be a number, an '@'', and a number ('repAdvice' @ 'weightAdvice') per set
-              the button will have a hover-over that displays the plateTotal object for each set 
-              !an event listener will grey out the button when clicked and be prevented from effecting the field 
-          !we need a wrapUp field
+              the button should have a hover-over that displays the plateTotal object for each set 
+            the focus exercise setAdvice field should grey-out when all of the setAdvice buttons are greyed out
+          !we need a wrapUp field for the focus exercise field
             we need a textbox for notes on the left side of the field
             we need a "done" button on the right
               the done button should not be clickable until all of the setAdvice buttons are clicked (using an event listener plus an if statement)
@@ -82,10 +85,12 @@ First Week Page
           the top of the field should have an "h3" for the exercise name taken from the muscleGroup index
           !we need a "ul" for flex-gridded setAdvice buttons used to record the performance of the exercise
             !we need an "li" for each button
+                !each button should have an event listener 
+                  the listener should grey out the button when clicked 
+                  the listener should be prevented from effecting the focus exercise field and card
             the number of setAdvice buttons will be 3
-            the set advice will be the number 5, an '@'', and a number ("5 @ 'day?of?weightAdvice') per set
-            'day?of?weightAdvice' will be from a 'splitDesign' index'
-            !an event listener will grey out the setAdvice buttons when clicked and be prevented from effecting the field 
+              the text content of setAdvice will be '5', an '@'', and a number per set from a 'splitDesign' index'
+              the button should have a hover-over that displays the plateTotal object for each set 
           !an event listener will grey out the accessoryExercise field a few moments after all of the setAdvice buttons are clicked
         we need a "cardio" field
           the field should have a dropdown menu with the following options: "none", "light", "medium", "heavy"
@@ -94,7 +99,12 @@ First Week Page
           the field should grey out after the "done" button is clicked
       we need a "workout complete" field at the bottom
         the field will only be interactable after all three of the previous fields are greyed out
-        the field will have a "done" button that will push the "workout complete" message to local storage
+        the field will have a "done" button 
+          the date the workout was completed will populate into the field and the dateCompleted object will be added to the workoutComplete array
+          a confirm will display
+            with a "workout complete" summary message
+            asking if you want results emailed to you
+          the button workoutComplete to local storage
         the entire card, including the header, will grey out after the "done" button is clicked
 we need a footer with the author's name and the current year
 
