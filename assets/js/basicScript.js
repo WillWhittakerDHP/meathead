@@ -1,2 +1,2 @@
-const redirect = document.querySelector('.navLink');
-redirect.addEventListener('click', function () {});
+// const redirect = document.querySelector('.navLink');
+// redirect.addEventListener('click', function () {});

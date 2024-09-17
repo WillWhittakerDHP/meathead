@@ -38,43 +38,57 @@
         <p>Let's talk about who you are and what you home to accomplish so we can start planning for the next month of work at the gym</p>
       </aside>
       <section class="flex-container">
-        <form class="card" class ="flex-item" id="personal-info">
+        <form class="card" class ="flex-item" id="personalInfoForm">
           <h2>Who are you?</h2>
           <div>
             <ul>
               <li>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" />
+                <label name="userNameGetter" for="userNameGetter">Username</label>
+                <input type="text" id="userNameGetter" onchange="getUserName"/>
               </li>
-              <li>
+              <!-- <li>
                 <label for="date">Date</label>
                 <input type="date" id="date" name="date" />
-              </li>
-              <li>
-                <label for="weight">Weight</label>
-                <input type="text" id="weight" name="weight" />
-              </li>
+              </li> -->
             </ul>
           </div>
-        </form>
-        <form class="card"  class="flex-item" id="personal-goals">
+          <!-- Having this be two cards was breaking the submission functionality, so I combined them into one card. -Will -->
+        <!-- </form> -->
+        <!-- <form class="card"  class="flex-item" id="personalGoalsForm"> -->
           <h2>What are your goals?</h2>
           <div>
           <ul>
               <li>
-              <label for="muscle-group">Muscle Group</label>
-              <input type="checkbox" id="muscle-group" name="muscle-group" />
+              <label name="muscleGroupSelector" for="muscleGroupSelector">Muscle Group</label>
+              <select id="muscleGroupSelector" onchange="selectMuscleGroup">
+                <option value=""></option>
+                <option value="chest">Chest</option>
+                <option value="legs">Legs</option>
+                <option value="back">Back</option>
+                <option value="shoulders">Shoulders</option>
+                <option value="arms">Arms</option>
+                <option value="core">Core</option>
+              </select>
             <li>
             <li>
-              <label for="split">Number of Days You Can go to the Gym in a Week</label>
-              <input type="checkbox" id="split" name="split" />
+              <label name="splitDesignSelector" for="splitDesignSelector">Number of Days You Can go to the Gym in a Week</label>
+              <select id="splitDesignSelector" onchange="selectSplitDesign">
+                <option value=""></option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+              </select>
+            <li>
+              <label name="oneRepMaxSetter" for="oneRepMaxSetter">What is the maximum weight you can lift of this exercise one time?</label>
+              <input type="text" id="oneRepMaxSetter" onchange="setOneRepMax"/>
             </li>
-            <li>
+                <!--I have turned off this since until we get the MVP for simplicity's sake-Will<li>
               <label for="accessory-exercises">Accessory Exercises</label>
               <input type="checkbox" id="accessory-exercises" name="accessory-exercises" />
-            </li>
+            </li> -->
           </ul>
         </div>
+        <button type="submit" id="submitButton" onclick="submitForm">Submit</button>
         </form>
       </section>
     </div>
@@ -136,19 +150,4 @@ Landing page
   we need a footer with the author's name and the current year
   !we need images with "alt" tags
 
-arrays and objects to be pushed to local storage
-  userName will be an array with the following properties:
-    the name of the user
-  muscleGroup will be an array with the following properties:
-    the name of the focus muscle group as focusExercise
-    the on object which is an array accessory exercise names as accessoryExercise
-  splitDesign will be an array with the following properties:
-    the number of days in the split (splitDaysTotal) to determine the number of dayCards
-    an object with the number of sets per day (setsPerDay) to determine the number of setAdvice buttons for each dayCard
-    an object which is an array of timer lengths per day (timerLengthPerDay) to determine the timer length for each dayCard
-    an object which is an array of reps per set per day (repAdvice) for the setAdvice buttons
-    an object which is an array of percentages to be used for weightAdvice for the setAdvice buttons
-  oneRepMax will be an array with the following properties:
-    the one rep max for the focus exercise
-    a value for the accessory exercise weight advice as accessoryExerciseWeightAdvice
 -->
