@@ -94,10 +94,10 @@ function selectMuscleGroup() {
 
 
 let splitDesign = [
-  splitDaysTotal = "",
-  setsPerDay = "",
-  timerLengthPerDay = "",
-  repAdvice = ""];
+  {timerLengthPerDay: ""},
+  {splitDaysTotal: ""},
+  {setsPerDay: ""},
+  {repAdvice: ""}];
 let percentagesForWeightAdvice = [];
 
 const splitDesignSelector = document.querySelector('#splitDesignSelector');
@@ -107,26 +107,26 @@ const splitDesignSelector = document.querySelector('#splitDesignSelector');
     switch (splitDesignSelector.value) { 
   case "three":
     splitDesign = [
-      splitDaysTotal = 3,
-      setsPerDay = 3,
-      timerLengthPerDay = 60,
-      repAdvice = "3 sets of 5 reps"];
+      {timerLengthPerDay: 60},
+      {splitDaysTotal: 3},
+      {setsPerDay: 3},
+      {repAdvice: 7}];
       percentagesForWeightAdvice = [0.65, 0.75, 0.85];
     break;
   case "four":
     splitDesign = [
-      splitDaysTotal = 4,
-      setsPerDay = 4,
-      timerLengthPerDay = 90,
-      repAdvice = "4 sets of 5 reps"],
+      {timerLengthPerDay: 90},
+      {splitDaysTotal: 4},
+      {setsPerDay: 4},
+      {repAdvice: 6}],
       percentagesForWeightAdvice = [0.60, 0.70, 0.80, 0.90];
     break;
   case "five":
     splitDesign = [
-      splitDaysTotal = 5,
-      setsPerDay = 5,
-      timerLengthPerDay = 120,
-      repAdvice = "5 sets of 5 reps"],
+      {timerLengthPerDay: 120},
+      {splitDaysTotal: 5},
+      {setsPerDay: 5},
+      {repAdvice: 5}],
       percentagesForWeightAdvice = [0.55, 0.65, 0.75, 0.85, 0.95];
     break;
 };
@@ -134,8 +134,8 @@ const splitDesignSelector = document.querySelector('#splitDesignSelector');
 
 
 let oneRepMax = [
-  focusOneRepMax = "",
-  accessoryOneRepMax = ""
+  {focusOneRepMax: ""},
+  {accessoryOneRepMax: ""}
 ];
 
 function setOneRepMax(event) {
@@ -150,28 +150,28 @@ function setOneRepMax(event) {
       break;
     case (oneRepMaxSetter <= 135):
     oneRepMax = [
-      focusOneRepMax = oneRepMaxSetter,
-      accessoryOneRepMax = "15"];
+      {focusOneRepMax: oneRepMaxSetter},
+      {accessoryOneRepMax: 15}];
       break;
   case (oneRepMaxSetter <= 225):
     oneRepMax = [
-      focusOneRepMax = oneRepMaxSetter,
-      accessoryOneRepMax = "20"];
+      {focusOneRepMax: oneRepMaxSetter},
+      {accessoryOneRepMax: 20}];
     break;
   case (oneRepMaxSetter <= 315):
     oneRepMax = [
-      focusOneRepMax = oneRepMaxSetter,
-      accessoryOneRepMax = "25"];
+      {focusOneRepMax: oneRepMaxSetter},
+      {accessoryOneRepMax: 25}];
     break;
   case (oneRepMaxSetter <= 405):
     oneRepMax = [
-      focusOneRepMax = oneRepMaxSetter,
-      accessoryOneRepMax = "30"];
+      {focusOneRepMax: oneRepMaxSetter},
+      {accessoryOneRepMax: 30}];
     break;
   case (oneRepMaxSetter <= 495):
     oneRepMax = [
-      focusOneRepMax = oneRepMaxSetter,
-      accessoryOneRepMax = "35"];
+      {focusOneRepMax: oneRepMaxSetter},
+      {accessoryOneRepMax: 35}];
     break;
   case (oneRepMaxSetter > 495):
     alert("Please enter a reasonable number, you Meathead");
@@ -209,19 +209,26 @@ function submitForm(event) {
     alert("Please enter your one rep max");
     break;
   default:
-    console.log(userName, focusExercise, accessoryExercises, splitDesign, percentagesForWeightAdvice, oneRepMax);
+    // console.log(
+      // userName, 
+      // focusExercise, 
+      // accessoryExercises, 
+      // splitDesign, 
+      // percentagesForWeightAdvice, 
+      // oneRepMax
+    // );
     localStorage.setItem('userName', userName);
+    localStorage.setItem('muscleGroup', muscleGroup);
     localStorage.setItem('focusExercise', focusExercise);
-    localStorage.setItem('accessoryExercise', accessoryExercises);
-    localStorage.setItem('splitDesign', splitDesign);
-    localStorage.setItem('percentagesForWeightAdvice', percentagesForWeightAdvice);
-    localStorage.setItem('oneRepMax', oneRepMax);
+    localStorage.setItem('accessoryExercises', JSON.stringify(accessoryExercises));
+    localStorage.setItem('splitDesign', JSON.stringify(splitDesign));
+    localStorage.setItem('percentagesForWeightAdvice', JSON.stringify(percentagesForWeightAdvice));
+    localStorage.setItem('oneRepMax', JSON.stringify(oneRepMax));
     break;
   };
   redirectPage()
 };  
-  
-  let redirectURL = '';
+
   
   function redirectPage() {
       redirectURL = "./weekOneIndex.html";  
