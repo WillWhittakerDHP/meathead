@@ -36,95 +36,274 @@
   </header>
   <main>
     <div class="container-fluid" style="padding: 20px 9px 30px; margin: 0px 0px 0px; border: 0px;">
-      <p style="font-size: 35px;">Welcome User name!</p>
-      <p style="font-size: 35px;">This is your #MuscleGroup# Page! For Week #NumberWeek#!</p>
+      <p>Welcome User name!</p>
+      <p>This is your #MuscleGroup# Page! For Week #NumberWeek#!</p>
     </div>
     
 
     <div class="container text-left"  style="padding: 20px 9px 30px; align-items: center;">
-      <div class="card">
-        <div class="card-body">              
-          <div class="container text-left" id="border">           
-            <!-- Top row Day and Timer-->
-            <div class="row">
-              <div class="col" id="vertRightBorder">
-                <h1 style="padding-top: 5px;">Day 1</h1>
-              </div>     
-              <div class="col-10" id="vertLeftBorder">
-                <h1 style="display: inline-block; height: 60px; padding-top: 5px;">Timer:</h1>
-                <p id = "timer">1:00</p>
-              </div>       
-            </div>
-            <!--^^ Top row Day and Timer ^^-->
-            <!-- Buttons Grid -->
-            <div class="container text-center" id="cardContent">
-              <div class="row gx-5" id="buttonGridTop">
-                <div class="col">
-                  <button type="button" class="btn btn-primary btn-lg">Example</button>
+      <div class="row" id="extendThis">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">              
+              <div class="container text-left" id="border">           
+                <!-- Top row Day and Timer-->
+                <div class="row">
+                  <div class="col" id="vertRightBorder">
+                    <h1 id="dayTimer">Day 1</h1>
+                  </div>     
+                  <div class="col" id="vertLeftBorder">
+                    <h1 id="dayTimer">Timer:</h1>
+                    <p id = "timer">1:00</p>
+                  </div>       
                 </div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-              </div>
-
-              <div class="row gx-5" id="buttonGridBottom">
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-              </div>
-              <!--^^ Buttons Grid ^^-->
-              <!-- Notes -->
-              <form class="row gx-2 align-items-center" id="notesForm">
-                <div class="col align-items-center">
-                  <div class="row gx-2 align-items-center">
-                    <label for="notes" class="col-sm-2 col-form-label col-form-label-sm" style="font-size: 35px;">Notes</label>
-                    <div class="col-sm-10">
-                    <textarea class="form-control" id="notes"></textarea>
+                <!--^^ Top row Day and Timer ^^-->
+                <!-- Buttons Grid -->
+                <div class="container text-center" id="cardContent">
+                  <div class="row gx-5" id="buttonGridTop">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
                     </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
                   </div>
-                </div>
-                <div class="col-md-2">
-                  <button type="button" class="btn btn-primary btn-lg">Done</button>
-                </div>
-              </form>
-              <!--^^ Notes ^^-->  
-              <!-- Accessory -->  
-              <div class="row justify-content-md-center" id="accessoryGridTop" style="font-size: 25px;">
-                Accessory Exercises
-              </div>
 
-              <div class="row gx-5" id="accessoryGridBottom">
-                <div class="col">
-                  <button type="button" class="btn btn-primary btn-lg">Example</button>
-                </div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-                <div class="col">Column</div>
-              </div>  
-              <!--^^ Accessory ^^-->
-              <!-- Cardio -->
-              <form class="row justify-content-md-center" id="cardioForm">
-                <div class="col-6">
-                  <div class="row g-0 justify-content-md-center">
-                    <label for="cardio" class="col" style="font-size: 35px;">Cardio</label>
+                  <div class="row gx-5" id="buttonGridBottom">
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>
+                  <!--^^ Buttons Grid ^^-->
+                  <!-- Notes -->
+                  <form class="row gx-2 align-items-center" id="notesForm">
+                    <div class="col align-items-center">
+                      <div class="row gx-2 align-items-center">
+                        <label for="notes" class="col-sm-2 col-form-label col-form-label-sm" id="noteSize">Notes</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control" id="notes"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <button type="button" class="btn btn-primary btn-lg">Done</button>
+                    </div>
+                  </form>
+                  <!--^^ Notes ^^-->  
+                  <!-- Accessory -->  
+                  <div class="row justify-content-md-center" id="accessoryGridTop" style="font-size: 25px;">
+                    Accessory Exercises
+                  </div>
+
+                  <div class="row gx-5" id="accessoryGridBottom">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>  
+                  <!--^^ Accessory ^^-->
+                  <!-- Cardio -->
+                  <form class="row justify-content-md-center" id="cardioForm">
                     <div class="col-6">
-                      <button type="button" class="btn btn-outline-primary" id="cardio">Something</button>
+                      <div class="row g-0 justify-content-md-center">
+                        <label for="cardio" class="col" style="font-size: 35px;">Cardio</label>
+                        <div class="col-6">
+                          <button type="button" class="btn btn-outline-primary" id="cardio">Something</button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </form> 
+                  <!--^^ Cardio ^^--> 
+                  <!-- Complete Button --> 
+                  <div class="row justify-content-md-center" id="complete1">
+                    <div class="col-70">
+                      <button type="button" class="btn btn-primary btn-lg">Complete</button>
+                    </div>                
+                  </div> 
+                  <!--^^ Complete Button ^^-->                 
                 </div>
-              </form> 
-              <!--^^ Cardio ^^--> 
-              <!-- Complete Button --> 
-              <div class="row justify-content-md-center" id="complete1">
-                <div class="col-70">
-                  <button type="button" class="btn btn-primary btn-lg">Complete</button>
-                </div>                
-              </div> 
-              <!--^^ Complete Button ^^-->                 
+              </div>
             </div>
-          </div>
+          </div>          
         </div>
+        
+        <div class="col">
+          <div class="card">
+            <div class="card-body">              
+              <div class="container text-left" id="border">           
+                <!-- Top row Day and Timer-->
+                <div class="row">
+                  <div class="col" id="vertRightBorder">
+                    <h1 id="dayTimer">Day 1</h1>
+                  </div>     
+                  <div class="col" id="vertLeftBorder">
+                    <h1 id="dayTimer">Timer:</h1>
+                    <p id = "timer">1:00</p>
+                  </div>       
+                </div>
+                <!--^^ Top row Day and Timer ^^-->
+                <!-- Buttons Grid -->
+                <div class="container text-center" id="cardContent">
+                  <div class="row gx-5" id="buttonGridTop">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>
+
+                  <div class="row gx-5" id="buttonGridBottom">
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>
+                  <!--^^ Buttons Grid ^^-->
+                  <!-- Notes -->
+                  <form class="row gx-2 align-items-center" id="notesForm">
+                    <div class="col align-items-center">
+                      <div class="row gx-2 align-items-center">
+                        <label for="notes" class="col-sm-2 col-form-label col-form-label-sm" id="noteSize">Notes</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control" id="notes"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <button type="button" class="btn btn-primary btn-lg">Done</button>
+                    </div>
+                  </form>
+                  <!--^^ Notes ^^-->  
+                  <!-- Accessory -->  
+                  <div class="row justify-content-md-center" id="accessoryGridTop" style="font-size: 25px;">
+                    Accessory Exercises
+                  </div>
+
+                  <div class="row gx-5" id="accessoryGridBottom">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>  
+                  <!--^^ Accessory ^^-->
+                  <!-- Cardio -->
+                  <form class="row justify-content-md-center" id="cardioForm">
+                    <div class="col-6">
+                      <div class="row g-0 justify-content-md-center">
+                        <label for="cardio" class="col" style="font-size: 35px;">Cardio</label>
+                        <div class="col-6">
+                          <button type="button" class="btn btn-outline-primary" id="cardio">Something</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form> 
+                  <!--^^ Cardio ^^--> 
+                  <!-- Complete Button --> 
+                  <div class="row justify-content-md-center" id="complete1">
+                    <div class="col-70">
+                      <button type="button" class="btn btn-primary btn-lg">Complete</button>
+                    </div>                
+                  </div> 
+                  <!--^^ Complete Button ^^-->                 
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">              
+              <div class="container text-left" id="border">           
+                <!-- Top row Day and Timer-->
+                <div class="row">
+                  <div class="col" id="vertRightBorder">
+                    <h1 id="dayTimer">Day 1</h1>
+                  </div>     
+                  <div class="col" id="vertLeftBorder">
+                    <h1 id="dayTimer">Timer:</h1>
+                    <p id = "timer">1:00</p>
+                  </div>       
+                </div>
+                <!--^^ Top row Day and Timer ^^-->
+                <!-- Buttons Grid -->
+                <div class="container text-center" id="cardContent">
+                  <div class="row gx-5" id="buttonGridTop">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>
+
+                  <div class="row gx-5" id="buttonGridBottom">
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>
+                  <!--^^ Buttons Grid ^^-->
+                  <!-- Notes -->
+                  <form class="row gx-2 align-items-center" id="notesForm">
+                    <div class="col align-items-center">
+                      <div class="row gx-2 align-items-center">
+                        <label for="notes" class="col-sm-2 col-form-label col-form-label-sm" id="noteSize">Notes</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control" id="notes"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <button type="button" class="btn btn-primary btn-lg">Done</button>
+                    </div>
+                  </form>
+                  <!--^^ Notes ^^-->  
+                  <!-- Accessory -->  
+                  <div class="row justify-content-md-center" id="accessoryGridTop" style="font-size: 25px;">
+                    Accessory Exercises
+                  </div>
+
+                  <div class="row gx-5" id="accessoryGridBottom">
+                    <div class="col">
+                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                  </div>  
+                  <!--^^ Accessory ^^-->
+                  <!-- Cardio -->
+                  <form class="row justify-content-md-center" id="cardioForm">
+                    <div class="col-6">
+                      <div class="row g-0 justify-content-md-center">
+                        <label for="cardio" class="col" style="font-size: 35px;">Cardio</label>
+                        <div class="col-6">
+                          <button type="button" class="btn btn-outline-primary" id="cardio">Something</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form> 
+                  <!--^^ Cardio ^^--> 
+                  <!-- Complete Button --> 
+                  <div class="row justify-content-md-center" id="complete1">
+                    <div class="col-70">
+                      <button type="button" class="btn btn-primary btn-lg">Complete</button>
+                    </div>                
+                  </div> 
+                  <!--^^ Complete Button ^^-->                 
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+
       </div>
     </div>
   </main>
