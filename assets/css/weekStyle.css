@@ -5,6 +5,12 @@
 }
 
 
+.card, 
+.container
+{
+  border-style: none;
+  background-color: rgba(238, 238, 247, 1);
+}
 
 .button
 {
@@ -20,4 +26,76 @@ p
   color: #fff;
   background-color: #00b3db;
   border-color: #285e8e; /*set the color you want here*/
+}
+
+
+/* Ids */
+#border{
+  border: solid;
+  border-radius: 20px;
+}
+#cardContent{
+  margin: 15px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+#vertRightBorder{
+  border-bottom-style: solid;
+}
+#vertLeftBorder{
+  border-left-style: solid;
+  border-bottom-style: solid;
+  vertical-align: baseline;
+  align-items: baseline
+}
+
+#timer{
+  font-size: 40px;
+  display: inline;
+  height: 60px;
+  float: right;
+}
+#buttonGridTop
+{
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-bottom: 20px;
+}
+#buttonGridBottom
+{
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-bottom: 20px;
+}
+
+#notesForm{
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-left: -12px;
+  margin-right: -12px;
+  border-top-style: solid;
+}
+
+#accessoryGridTop{
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-top-style: solid;
+}
+
+#accessoryGridBottom{
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-bottom: 20px;
+  border-bottom-style: solid;
+}
+
+#cardio{
+  margin-top: 10px;
+}
+
+#complete1{
+  padding-top: 10px;
+  margin-bottom: 10px;
+  border-top-style: solid;
 }
