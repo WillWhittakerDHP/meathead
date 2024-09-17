@@ -10,17 +10,20 @@
   <title>Meathead: Be strong!</title>
 </head>
 <body>
-  <header>
+  <div class="hero-image">
+    <div class="hero-text">
+      <header>
     <h1>Meathead</h1>
     <nav>
       <ul>  
-        <li>Home</a></li>
-        <li><a class="navLink" href="./weekOneIndex.html">First Week</a></li>
-        <li><a class="navLink" href="./weekTwoIndex.html">Second Week</a></li>
-        <li><a class="navLink" href="./weekThreeIndex.html">Third Week</a></li>
-        <li><a class="navLink" href="./weekFourIndex.html">Fourth Week</a></li>
+           <li>Home</a></li>
+         <a class="navLink" href="./weekOneIndex.html">First Week</a></li>
+        <a class="navLink" href="./weekTwoIndex.html">Second Week</a></li>
+        <a class="navLink" href="./weekThreeIndex.html">Third Week</a></li>
+        <a class="navLink" href="./weekFourIndex.html">Fourth Week</a></li>
       </ul>
     </nav>
+  </div>
   </header>
   <div class="hero-banner">
     <div>
@@ -40,9 +43,8 @@
           <div>
             <ul>
               <li>
-                <!-- WILL< THIS IS WHERE YOU STOPPED ON MONDAY NIGHT AND YOU HAVENT GOTTEN THE USERNAME TO BECOME AN OBJECT LANDINGSCRIPT.JS LINES 3-20 -->
-                <label for="userName">Username</label>
-                <input type="submit" id="userNameGetter" name="userNameGetter"/>
+                <label name="userNameGetter" for="userNameGetter">Username</label>
+                <input type="text" id="userNameGetter" onchange="getUserName"/>
               </li>
               <!-- <li>
                 <label for="date">Date</label>
@@ -50,14 +52,16 @@
               </li> -->
             </ul>
           </div>
-        </form>
-        <form class="card"  class="flex-item" id="personal-goals">
+          <!-- Having this be two cards was breaking the submission functionality, so I combined them into one card. -Will -->
+        <!-- </form> -->
+        <!-- <form class="card"  class="flex-item" id="personalGoalsForm"> -->
           <h2>What are your goals?</h2>
           <div>
           <ul>
               <li>
-              <label for="muscleGroup">Muscle Group</label>
-              <select name="muscleGroup" id="muscleGroupSelector" onchange="selectMuscleGroup">
+              <label name="muscleGroupSelector" for="muscleGroupSelector">Muscle Group</label>
+              <select id="muscleGroupSelector" onchange="selectMuscleGroup">
+                <option value=""></option>
                 <option value="chest">Chest</option>
                 <option value="legs">Legs</option>
                 <option value="back">Back</option>
@@ -67,16 +71,16 @@
               </select>
             <li>
             <li>
-              <label for="splitDesign">Number of Days You Can go to the Gym in a Week</label>
-              <select name="splitDesign" id="splitDesignSelector" onchange="selectSplitDesign">
+              <label name="splitDesignSelector" for="splitDesignSelector">Number of Days You Can go to the Gym in a Week</label>
+              <select id="splitDesignSelector" onchange="selectSplitDesign">
+                <option value=""></option>
                 <option value="three">3</option>
                 <option value="four">4</option>
                 <option value="five">5</option>
               </select>
             <li>
-              <label for="weight">What is the maximum weight you can lift of this exercise one time?</label>
-              <input type="text" name="oneRepMaxGetter" id="oneRepMaxGetter"
-              onchange="setOneRepMax"/>
+              <label name="oneRepMaxSetter" for="oneRepMaxSetter">What is the maximum weight you can lift of this exercise one time?</label>
+              <input type="text" id="oneRepMaxSetter" onchange="setOneRepMax"/>
             </li>
                 <!--I have turned off this since until we get the MVP for simplicity's sake-Will<li>
               <label for="accessory-exercises">Accessory Exercises</label>
@@ -84,7 +88,7 @@
             </li> -->
           </ul>
         </div>
-        <button type="submit" id="submit" onclick="submitForm">Submit</button>
+        <button type="submit" id="submitButton" onclick="submitForm">Submit</button>
         </form>
       </section>
     </div>
