@@ -1,3 +1,10 @@
+:root{
+  /* For Notes: oneDaySize: 35, twoDaySize: 25 */
+  /* For Day and Timer: oneDaySize: 35, twoDaySize: 25 */
+  --notesSize: 35px;
+  --dayTimerSize: 25px;
+}
+
 .dropdown-menu{
   /* I don't know how to edit variables for bootstrap!*/
   --dropdown-link-active-color: rgba(68, 88, 119, 1);
@@ -20,6 +27,7 @@
 p
 {
     display: inline-block;
+    font-size: 35px;
 }
 
 .btn-primary:hover {
@@ -45,11 +53,11 @@ p
   border-left-style: solid;
   border-bottom-style: solid;
   vertical-align: baseline;
-  align-items: baseline
+  align-items: baseline;
 }
 
 #timer{
-  font-size: 40px;
+  font-size: var(--dayTimerSize);
   display: inline;
   height: 60px;
   float: right;
@@ -81,6 +89,7 @@ p
   padding-bottom: 20px;
   padding-top: 20px;
   border-top-style: solid;
+  font-size: 25px;
 }
 
 #accessoryGridBottom{
@@ -94,8 +103,20 @@ p
   margin-top: 10px;
 }
 
-#complete1{
+#complete{
   padding-top: 10px;
   margin-bottom: 10px;
   border-top-style: solid;
+}
+
+#dayTimer{
+  font-size: var(--dayTimerSize);
+  padding-top: 5px;
+  height: 60px;
+  width: 100px;
+  display: inline-block;
+}
+
+#noteSize{
+  font-size: var(--notesSize);
 }
