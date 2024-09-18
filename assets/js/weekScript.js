@@ -106,3 +106,48 @@ function cardColumnCreator(numberOfColumns, focusSets,accessorySets){
 }
 
 cardColumnCreator(1,0,0);
+  console.log(
+  //   userName, 
+  //   muscleGroup, 
+  //   focusExercise, 
+  //   accessoryExercises, 
+  //   splitDesign, 
+    // splitDesign[0].timerLengthPerDay,
+  //   splitDesign[3],
+  //   percentagesForWeightAdvice, 
+  //   oneRepMax,
+  //   oneRepMax[0],
+  //    oneRepMax[0].focusOneRepMax
+  );
+
+
+function init() {
+setValues();
+// setTimer();
+};
+
+init();
+
+
+const timeEl = document.querySelector('#timer');
+let secondsLeft = splitDesign[0].timerLengthPerDay;
+
+function setTimer() {
+  let timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      setInterval(splitDesign[0].timerLengthPerDay);
+    }
+  }, 1000);
+};
+
+let setAdvice = `Set #decremented# ${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
+console.log(setAdvice);
+
+const setAdviceButton = document.getElementById('focusExerciseSetAdvice');
+setAdviceButton.textContent = setAdvice;
+setAdviceButton.addEventListener("click", setTimer);
+
