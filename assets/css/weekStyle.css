@@ -89,6 +89,7 @@ p
   padding-bottom: 20px;
   padding-top: 20px;
   border-top-style: solid;
+  font-size: 25px;
 }
 
 #accessoryGridBottom{
@@ -102,7 +103,7 @@ p
   margin-top: 10px;
 }
 
-#complete1{
+#complete{
   padding-top: 10px;
   margin-bottom: 10px;
   border-top-style: solid;
