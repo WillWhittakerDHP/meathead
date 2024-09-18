@@ -237,6 +237,15 @@ function cardColumnCreator(numberOfColumns, focusSets,accessorySets){
 }
 
 cardColumnCreator(6,0,0);
+  function setValues() {
+  userName = localStorage.getItem('userName');
+  muscleGroup = localStorage.getItem('muscleGroup');
+  focusExercise = localStorage.getItem('focusExercise');
+  accessoryExercises = JSON.parse(localStorage.getItem('accessoryExercises'));
+  splitDesign = JSON.parse(localStorage.getItem('splitDesign'));
+  percentagesForWeightAdvice = JSON.parse(localStorage.getItem('percentagesForWeightAdvice'));
+  oneRepMax = JSON.parse(localStorage.getItem('oneRepMax'));
+return userName, muscleGroup, focusExercise, accessoryExercises, splitDesign, percentagesForWeightAdvice, oneRepMax;
   console.log(
   //   userName, 
   //   muscleGroup, 
@@ -248,37 +257,52 @@ cardColumnCreator(6,0,0);
   //   percentagesForWeightAdvice, 
   //   oneRepMax,
   //   oneRepMax[0],
-  //    oneRepMax[0].focusOneRepMax
+  //   oneRepMax[0].focusOneRepMax
   );
 
 
 function init() {
 setValues();
 // setTimer();
+// setFocusSetAdviceButtonContent();
 };
 
 init();
 
 
-const timeEl = document.querySelector('#timer');
-let secondsLeft = splitDesign[0].timerLengthPerDay;
 
-function setTimer() {
+  const setAdviceButton = document.getElementById('focusExerciseSetAdvice');
+  setAdviceButton.textContent = `Set #decremented#: ${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
+  setAdviceButton.addEventListener("click", runTimer);
+
+
+// function setTimer() {
+  const timer = document.querySelector('#timer');
+  const secondsPerSet = splitDesign[0].timerLengthPerDay;
+  timer.textContent = secondsPerSet;
+  // timer.textContent = secondsLeft;
+  // return timer;
+  // };
+  let secondsLeft = splitDesign[0].timerLengthPerDay;
+  
+  function runTimer() {
   let timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft;
+    timer.textContent = secondsLeft;
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      setInterval(splitDesign[0].timerLengthPerDay);
-    }
-  }, 1000);
+      resetTimer();
+      }
+    }, 1000);
 };
 
-let setAdvice = `Set #decremented# ${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
-console.log(setAdvice);
+function resetTimer() {
+  secondsLeft = secondsPerSet;
+  console.log(secondsLeft)
+  timer.textContent = secondsPerSet;
+  // setTimer();
+};
 
-const setAdviceButton = document.getElementById('focusExerciseSetAdvice');
-setAdviceButton.textContent = setAdvice;
-setAdviceButton.addEventListener("click", setTimer);
+
 
