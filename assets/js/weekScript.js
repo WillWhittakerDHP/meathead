@@ -72,9 +72,28 @@ function cardColumnCreator(numberOfColumns, focusSets,accessorySets){
 
     //Top Row
     var top_row = document.createElement('div.row');
-    var day_col = document.createElement('div.col-4');
+
+    var day_col = document.createElement('div');
+    day_col.classList.add('col-4'); 
+    day_col.setAttribute("id", "vertRightBorder");
+
     var day_h = document.createElement('h1');
+    day_h.setAttribute("id", "dayTimer");
     day_h.textContent = "Day " + (i+1);
+
+    var timer_col_big = document.createElement('div');
+    timer_col_big.classList.add('col'); 
+    timer_col_big.setAttribute("id", "vertLeftBorder");
+
+    var row_timer = document.createElement('div');
+    row_timer.classList.add('row'); 
+
+    var row_timer_col_h = document.createElement('div');
+    row_timer_col_h.classList.add('col'); 
+
+    var timer_h = document.createElement('h1');
+    timer_h.setAttribute("id", "dayTimer");
+    timer_h.textContent = "Timer:";
 
     day_col.appendChild(day_h);
     top_row.appendChild(day_col);
