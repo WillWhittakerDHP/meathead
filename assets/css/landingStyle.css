@@ -47,7 +47,7 @@ main {
 
 .intro {
   margin-right: 20px;
-  padding: 20px;
+  padding: 40px;
   clear: both;
   float: left;
   width: 20%;
@@ -57,11 +57,11 @@ main {
 
 .page-section {
   margin: 25px 0;
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
@@ -75,11 +75,13 @@ main {
 }
 
 .page-section > div {
-  flex: 0 0 77%;
+  flex: 0 0 77%; 
+  
 }
 
 .page-section p {
   margin-bottom: 20px;
+ background-color: #fff;
 } */
 
 .flex-container {
@@ -90,7 +92,7 @@ main {
 
 .flex-item {
   border: 5px solid var(--secondary);
-  background-color: var(--primary);
+  background-color: none;
   color: var(--tertiary);
   height: 150px;
   /* max-height: 150px; */
@@ -116,7 +118,7 @@ main {
 }
 
 .flex-item div {
-  background-color: var(--secondary);
+  background-color: none;
   padding: 8px 10px;
 }
 

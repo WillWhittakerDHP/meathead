@@ -36,8 +36,9 @@ let oneRepMax = [
   //   splitDesign[3],
   //   percentagesForWeightAdvice, 
     oneRepMax,
-    oneRepMax[0],
-    oneRepMax[0].focusOneRepMax
+    //oneRepMax[0],
+    //oneRepMax[0].focusOneRepMax 
+
   );
 };
 
