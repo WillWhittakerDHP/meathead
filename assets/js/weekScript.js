@@ -110,7 +110,7 @@ function cardColumnCreator(){
     containerForTheFocusExerciseButtons.classList.add('container','text-center');
     containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
     containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
-    containerForTheFocusExerciseButtons.setAttribute("enabled","true");
+    containerForTheFocusExerciseButtons.setAttribute("disabled","true");
 
     
     //Start Appending and Nesting Buttons
@@ -134,24 +134,21 @@ function cardColumnCreator(){
     
     // Buttons for Focus Exercise
     let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
-    let enabledValueofAllFocusButtonsAtIndexOnThisCard = [];
+    let disabledValueofAllFocusButtonsAtIndexOnThisCard = [];
     
     for (let i = 0; i < numberOfFocusExerciseButtons; i++)
       {
       let buttonAtIndex = document.createElement('button');
       buttonAtIndex.setAttribute("name", "button" + i);
-      // buttonAtIndex.setAttribute("enabled", "true");
       buttonAtIndex.textContent = `Set ` + (i+1) + `: \n${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice).toFixed(0) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
-      // buttonAtIndex.textContent = `D`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
 
       buttonAtIndex.addEventListener("click", function() {
         buttonAtIndex.setAttribute("disabled","true");
         runTimer();
-        console.log(buttonAtIndex.getAttribute("disabled"));
-        enabledValueofAllFocusButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
-        if (enabledValueofAllFocusButtonsAtIndexOnThisCard.length >= numberOfFocusExerciseButtons) {
-          containerForTheFocusExerciseButtons.setAttribute("enabled","false");
+        disabledValueofAllFocusButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+        if (disabledValueofAllFocusButtonsAtIndexOnThisCard.length >= numberOfFocusExerciseButtons) {
+          containerForTheFocusExerciseButtons.setAttribute("disabled","false");
         }
         }
       );    
@@ -199,7 +196,7 @@ function cardColumnCreator(){
     let containerForTheAccessoryExerciseButtons = document.createElement('div');
     containerForTheAccessoryExerciseButtons.classList.add('row','justify-content-md-center');
     containerForTheAccessoryExerciseButtons.setAttribute("id", "accessoryGridTop"); 
-    containerForTheAccessoryExerciseButtons.setAttribute("enabled","true");
+    containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
 
     let nameOfTheAccessoryExercise = document.createElement('h5');
     nameOfTheAccessoryExercise.textContent = accessoryExercisesArray[i];
@@ -212,23 +209,22 @@ function cardColumnCreator(){
     // End Accessory 
 
   let numberOfAccessoryExerciseButtons = 3;
-  let enabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
-
+  
   for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
     {
       let buttonAtIndex = document.createElement('button');
+      let disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
       buttonAtIndex.setAttribute("name", "button" + i);
-      buttonAtIndex.setAttribute("enabled", "true");
       buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
       
       buttonAtIndex.addEventListener("click", function() {
-        buttonAtIndex.setAttribute("enabled","false");
-        enabledValueofAccessoryAllButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
-        if (enabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
-          containerForTheAccessoryExerciseButtons.setAttribute("enabled","false");
+        buttonAtIndex.setAttribute("disabled","true");
+        disabledValueofAllAccessoryButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+        if (disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
+          containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
         }
-        console.log(containerForTheAccessoryExerciseButtons.getAttribute("enabled"));
+        console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
         }
       );    
       
