@@ -81,3 +81,8 @@ nav a:last-child {
   margin-right: 0;
 }
 
+@media screen and (max-windth) {
+header{
+  background-color: beige;
+}  
+}
