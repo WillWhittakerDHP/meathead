@@ -4,6 +4,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  background-size: 99%;
 }
 
 main {
@@ -27,11 +28,12 @@ main {
 
 .hero-banner div {
   flex: 0 0 90%;
+  
 }
 
 .hero-banner h2 {
   background-color:none;
-  color: black;
+  color: rgb(9, 9, 9);
   margin: 0;
   padding: 5px 10px;
   font-size: 2.3rem;
@@ -50,47 +52,51 @@ main {
   padding: 20px;
   clear: both;
   float: left;
-  width: 20%;
+  width: 40%;
   height: 100%;
-  background-color: none;
+  background-color: beige;
+  color: black;
 }
 
 .page-section {
   margin: 25px 0;
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
 .page-section > h2 {
   flex: 0 0 20%;
   text-align: right;
-  padding-right: 15px;
+  padding-right: 20px;
   border-right: 4px;
-  font-size: 4vw;
+  font-size: 2vw;
   line-height: 1.1;
 }
 
 .page-section > div {
-  flex: 0 0 77%;
+  flex: 0 0 77%; 
+  
 }
 
 .page-section p {
-  margin-bottom: 20px;
+  margin-bottom: 0%;
+  background-color: beige;
 } */
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 }
 
 .flex-item {
   border: 5px solid var(--secondary);
-  background-color: var(--primary);
+  background-color: none;
   color: var(--tertiary);
   height: 150px;
   /* max-height: 150px; */
@@ -112,11 +118,11 @@ main {
 }
 
 .flex-item:hover {
-  background-color: #fff(0, 0, 0, 0.3);
+  background-color: #fff(0 0 0 3);
 }
 
 .flex-item div {
-  background-color: var(--secondary);
+  background-color: beige;
   padding: 8px 10px;
 }
 
@@ -169,11 +175,20 @@ main {
   position: relative;  
 }
 
+@media screen and (max-width:880px) {
+  header, div, main
+  footer{
+    flex-direction: column;
+  }
+  
+}
+
 @media screen and (max-width: 980px) {
   header {
     padding: 0 0 10px 0;
     justify-content: center;
     text-align: center;
+    background-color: beige;
   }
 
   header h1 {
@@ -207,3 +222,4 @@ main {
     min-height: 400px;
     }
 }
+
