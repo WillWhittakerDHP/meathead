@@ -11,12 +11,13 @@ function getUserName(event) {
 
 let muscleGroup = "";
 let focusExercise = "";
-let accessoryExercises = [
-    {dayOne: ""},
-    {dayTwo: ""},
-    {dayThree: ""},
-    {dayFour: ""},
-    {dayFive:  ""}];
+// let accessoryExercises = [
+//     {dayOne: ""},
+//     {dayTwo: ""},
+//     {dayThree: ""},
+//     {dayFour: ""},
+//     {dayFive:  ""}];
+let accessoryExercisesArray = [];
   
 const muscleGroupSelector = document.querySelector('#muscleGroupSelector');
 // muscleGroupSelector.addEventListener("change", selectMuscleGroup); 
@@ -26,70 +27,71 @@ function selectMuscleGroup() {
     case "chest":
       muscleGroup = muscleGroupSelector.value;
       focusExercise = "Bench Press";
-      accessoryExercises = [
-        {dayOne: "Tricep Extension"},
-        {dayTwo: "Dumbbell Fly"},
-        {dayThree: "Incline Bench Press"},
-        {dayFour: "Dumbbell Press"},
-        {dayFive:  "Chest Press"}];
+      // accessoryExercises = [
+      //   {dayOne: "Tricep Extension"},
+      //   {dayTwo: "Dumbbell Fly"},
+      //   {dayThree: "Incline Bench Press"},
+      //   {dayFour: "Dumbbell Press"},
+      //   {dayFive:  "Chest Press"}];
+      accessoryExercisesArray = ["Tricep Extension", "Dumbbell Fly", "Incline Bench Press", "Dumbbell Press", "Chest Press"];
       break;
     case "legs":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Squat";
-        accessoryExercises = [
-          {dayOne: "Leg Press"},
-          {dayTwo: "Leg Curl"},
-          {dayThree: "Lunges"},
-          {dayFour: "Leg Extension"},
-          {dayFive:  "Calf Raise"}];
-        // ];
+        // accessoryExercises = [
+        //   {dayOne: "Leg Press"},
+        //   {dayTwo: "Leg Curl"},
+        //   {dayThree: "Lunges"},
+        //   {dayFour: "Leg Extension"},
+        //   {dayFive:  "Calf Raise"}];
+        accessoryExercisesArray = ["Leg Press", "Leg Curl", "Lunges", "Leg Extension", "Calf Raise"];
           break;
     case "back":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Deadlift";
-        accessoryExercises = [
-          {dayOne: "Romanian Deadlift"}, 
-          {dayTwo: "Leg Curl"},
-          {dayThree: "Pull Up"},
-          {dayFour: "Bent Over Row"},
-          {dayFive:  "Lat Pulldown"}];
-        // ];
+        // accessoryExercises = [
+        //   {dayOne: "Romanian Deadlift"}, 
+        //   {dayTwo: "Leg Curl"},
+        //   {dayThree: "Pull Up"},
+        //   {dayFour: "Bent Over Row"},
+        //   {dayFive:  "Lat Pulldown"}];
+        accessoryExercisesArray = ["Romanian Deadlift", "Leg Curl", "Pull Up", "Bent Over Row", "Lat Pulldown"];
           break;
     case "shoulders":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Overhead Press";
-        accessoryExercises = [
-          {dayOne: "Lateral Raise"}, 
-          {dayTwo: "Front Raise"},
-          {dayThree: "Rear Delt Fly"},
-          {dayFour: "Shrug"},
-          {dayFive:  "Arnold Press"}];
-        // ];
+        // accessoryExercises = [
+        //   {dayOne: "Lateral Raise"}, 
+        //   {dayTwo: "Front Raise"},
+        //   {dayThree: "Rear Delt Fly"},
+        //   {dayFour: "Shrug"},
+        //   {dayFive:  "Arnold Press"}];
+        accessoryExercisesArray = ["Lateral Raise", "Front Raise", "Rear Delt Fly", "Shrug", "Arnold Press"];
           break;
     case "arms":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Bicep Curl";
-        accessoryExercises = [
-          {dayOne: "Tricep Extension"}, 
-          {dayTwo: "Hammer Curl"},
-          {dayThree: "Skull Crusher"},
-          {dayFour: "Preacher Curl"},
-          {dayFive:  "Concentration Curl"}]
-        // ];
+        // accessoryExercises = [
+        //   {dayOne: "Tricep Extension"}, 
+        //   {dayTwo: "Hammer Curl"},
+        //   {dayThree: "Skull Crusher"},
+        //   {dayFour: "Preacher Curl"},
+        //   {dayFive:  "Concentration Curl"}]
+        accessoryExercisesArray = ["Tricep Extension", "Hammer Curl", "Skull Crusher", "Preacher Curl", "Concentration Curl"];
           break;
     case "core":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Plank";
-        accessoryExercises = [
-          {dayOne: "Russian Twist"}, 
-          {dayTwo: "Leg Raise"},
-          {dayThree: "Bicycle Crunch"},
-          {dayFour: "Side Plank"},
-          {dayFive:  "V-Up"}]
-        // ];
+        // accessoryExercises = [
+        //   {dayOne: "Russian Twist"}, 
+        //   {dayTwo: "Leg Raise"},
+        //   {dayThree: "Bicycle Crunch"},
+        //   {dayFour: "Side Plank"},
+        //   {dayFive:  "V-Up"}]
+        accessoryExercisesArray = ["Russian Twist", "Leg Raise", "Bicycle Crunch", "Side Plank", "V-Up"];
           break;
         };
-    return muscleGroup, focusExercise, accessoryExercises;
+    return muscleGroup, focusExercise, accessoryExercisesArray;
   };
 
 
@@ -175,6 +177,7 @@ function setOneRepMax(event) {
     break;
   case (oneRepMaxSetter > 495):
     alert("Please enter a reasonable number, you Meathead");
+    event.preventDefault();
     break;
 };
 return oneRepMax;
@@ -220,7 +223,8 @@ function submitForm(event) {
     localStorage.setItem('userName', userName);
     localStorage.setItem('muscleGroup', muscleGroup);
     localStorage.setItem('focusExercise', focusExercise);
-    localStorage.setItem('accessoryExercises', JSON.stringify(accessoryExercises));
+    // localStorage.setItem('accessoryExercises', JSON.stringify(accessoryExercises));
+    localStorage.setItem('accessoryExercisesArray', JSON.stringify(accessoryExercisesArray));
     localStorage.setItem('splitDesign', JSON.stringify(splitDesign));
     localStorage.setItem('percentagesForWeightAdvice', JSON.stringify(percentagesForWeightAdvice));
     localStorage.setItem('oneRepMax', JSON.stringify(oneRepMax));
