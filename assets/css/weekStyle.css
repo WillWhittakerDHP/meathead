@@ -3,6 +3,11 @@
   /* For Day and Timer: oneDaySize: 35, twoDaySize: 25 */
   --notesSize: 35px;
   --dayTimerSize: 25px;
+  /*for enabled/disabled buttons, sections, and cards*/
+  --enabledButtonColor: rgb(35, 123, 254);
+  --disabledButtonColor: rgb(111, 149, 205);
+  --enabledSectionColor: rgb(111, 149, 205);
+  --disabledSectionColor: rgb(188, 212, 248);
 }
 
 .dropdown-menu{
@@ -13,15 +18,20 @@
 
 
 .card, 
-.container
-{
+.container{
   border-style: none;
   background-color: rgba(238, 238, 247, 1);
 }
 
-.button
-{
+button{
   justify-content: right;
+  background-color: var(--enabledButtonColor);
+  color: rgba(68, 88, 119, 1);
+}
+
+button:disabled{
+  background-color: var(--disabledButtonColor);
+  color: rgba(68, 88, 119, 1);
 }
 
 p
@@ -45,15 +55,19 @@ p
 #cardContent{
   margin: 15px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
+  
 }
 #vertRightBorder{
   border-bottom-style: solid;
+  background-color: var(--enabledSectionColor);
+
 }
 #vertLeftBorder{
   border-left-style: solid;
   border-bottom-style: solid;
   vertical-align: baseline;
   align-items: baseline;
+  background-color: var(--enabledSectionColor);
 }
 
 #timer{
@@ -61,18 +75,20 @@ p
   display: inline;
   height: 60px;
   float: right;
+  background-color: var(--enabledSectionColor);
 }
-#buttonGridTop
-{
+
+#buttonGridTop{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
 }
-#buttonGridBottom
-{
+
+#buttonGridBottom{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+
 }
 
 #notesForm{
@@ -81,15 +97,17 @@ p
   margin-left: -12px;
   margin-right: -12px;
   border-top-style: solid;
+  background-color: var(--enabledSectionColor);
 }
 
-#accessoryGridTop{
+#accessoryGridTop:enabled{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
   padding-top: 20px;
   border-top-style: solid;
   font-size: 25px;
+  background-color: var(--enabledSectionColor);
 }
 
 #accessoryGridBottom{
@@ -97,12 +115,17 @@ p
   margin-right: -12px;
   padding-bottom: 20px;
   border-bottom-style: solid;
+  background-color: var(--enabledSectionColor);
 }
 
 #cardio{
   margin-top: 10px;
+  background-color: var(--enabledSectionColor);
 }
 
+#cardioForm{
+  background-color: var(--enabledSectionColor);
+}
 #complete{
   padding-top: 10px;
   margin-bottom: 10px;
