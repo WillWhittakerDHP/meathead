@@ -60,7 +60,7 @@ p
 #vertRightBorder{
   border-bottom-style: solid;
   background-color: var(--enabledSectionColor);
-
+  border-radius: 17px 0px 0px 0px;
 }
 #vertLeftBorder{
   border-left-style: solid;
@@ -68,6 +68,7 @@ p
   vertical-align: baseline;
   align-items: baseline;
   background-color: var(--enabledSectionColor);
+  border-radius: 0px 17px 0px 0px;
 }
 
 #timer{
@@ -125,6 +126,7 @@ p
 
 #cardioForm{
   background-color: var(--enabledSectionColor);
+  border-radius: 0px 0px 17px 17px;
 }
 #complete{
   padding-top: 10px;
@@ -142,4 +144,12 @@ p
 
 #noteSize{
   font-size: var(--notesSize);
+}
+
+#bigContainer{
+  background-color: transparent;
+}
+
+#card{
+  background-color: transparent;
 }
