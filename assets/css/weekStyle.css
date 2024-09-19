@@ -3,6 +3,11 @@
   /* For Day and Timer: oneDaySize: 35, twoDaySize: 25 */
   --notesSize: 35px;
   --dayTimerSize: 25px;
+  /*for enabled/disabled buttons, sections, and cards*/
+  --enabledButtonColor: rgb(35, 123, 254);
+  --disabledButtonColor: rgb(111, 149, 205);
+  --enabledSectionColor: rgb(111, 149, 205);
+  --disabledSectionColor: rgb(188, 212, 248);
 }
 
 .dropdown-menu{
@@ -19,9 +24,29 @@
   background-color: rgba(238, 238, 247, 1);
 }
 
-.button
+button
 {
   justify-content: right;
+  background-color: var(--enabledButtonColor);
+  color: rgba(68, 88, 119, 1);
+}
+
+button:disabled
+{
+  background-color: var(--disabledButtonColor);
+  color: rgba(68, 88, 119, 1);
+}
+
+.focusExerciseSection,
+.accessoryExerciseSection
+{
+  background-color: var(--enabledSectionColor);
+}
+
+.focusExerciseSection:disabled,
+.accessoryExerciseSection:disabled
+{
+  background-color: var(--disabledSectionColor);
 }
 
 p

@@ -12,6 +12,7 @@
 <body>
   <header>
     <h1>Meathead</h1>
+    <h2 id = "headerWeekNumber"></h2>
     <nav class="navbar navbar-expand" style="background-color: #77f2fd;">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -36,19 +37,18 @@
   </header>
   <main>
     <div class="container-fluid" style="padding: 20px 9px 30px; margin: 0px 0px 0px; border: 0px;">
-      <p>Welcome User name!</p>
-      <p>This is your #MuscleGroup# Page! For Week #NumberWeek#!</p>
+      <h3 id = "headerUserName"></h3>
+      <h4>When you're done with a set, click that button to start your rest timer!</h4>
     </div>
     
 
     <div class="container text-left"  style="padding: 20px 9px 30px; align-items: center;">
       <div class="row" id="appendHere">   
-        
-        <div class="col-4">
-          <div class="card">
-            <div class="card-body">              
-              <div class="container" id="border">           
-                <!-- Top row Day and Timer-->
+        <!-- <div class="col-4"
+          <div class="card"
+            <div class="card-body"              
+              <div class="container" id="border"           
+                <!-- Top row Day and Timer--
                 <div class="row">
                   <div class="col-4" id="vertRightBorder">
                     <h1 id="dayTimer">Day 1</h1>
@@ -64,14 +64,19 @@
                     </div>
                   </div>       
                 </div>
-                <!--^^ Top row Day and Timer ^^-->
-                <!-- Buttons Grid -->
+                <!--^^ Top row Day and Timer ^^--
+                <!-- Buttons Grid --
                 <div class="container text-center" id="cardContent">
-                  <div class="row gx-5" id="buttonGridTop">
+                  <div class ="focusExerciseSection" class="row gx-5" id="buttonGridTop">
                     <div class="col">
-                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                      <button type="button" class = "focusExerciseSetAdviceButton"
+                      id = "focusExerciseSetAdviceButton"
+                      class="btn btn-primary btn-lg">Button 1</button>
                     </div>
-                    <div class="col">Column</div>
+                    <div class="col">
+                      <button type="button" class = "focusExerciseSetAdviceButton"
+                      class="btn btn-primary btn-lg">Button 2</button>
+                    </div>
                     <div class="col">Column</div>
                     <div class="col">Column</div>
                   </div>
@@ -82,30 +87,31 @@
                     <div class="col">Column</div>
                     <div class="col">Column</div>
                   </div>
-                  <!--^^ Buttons Grid ^^-->
-                  <!-- Notes -->
+                  <!--^^ Buttons Grid ^^--
+                  <!-- Notes --
                   <form class="row gx-2 align-items-center" id="notesForm">
                     <div class="col align-items-center">                      
                       <label for="notes" id="noteSize">Notes</label>                        
                       <textarea class="form-control" id="notes"></textarea>                        
                     </div>
                   </form>
-                  <!--^^ Notes ^^-->  
-                  <!-- Accessory -->  
+                  <!--^^ Notes ^^-- 
+                  <!-- Accessory --  
                   <div class="row justify-content-md-center" id="accessoryGridTop">
                     Accessory Exercises
                   </div>
 
                   <div class="row gx-5" id="accessoryGridBottom">
                     <div class="col">
-                      <button type="button" class="btn btn-primary btn-lg">Example</button>
+                      <button type="button" class = "accessoryExerciseSetAdviceButton"
+                      id = "accessoryExerciseSetAdviceButton" class="btn btn-primary btn-lg">Example</button>
                     </div>
                     <div class="col">Column</div>
                     <div class="col">Column</div>
                     <div class="col">Column</div>
                   </div>  
-                  <!--^^ Accessory ^^-->
-                  <!-- Cardio -->
+                  <!--^^ Accessory ^^--
+                  <!-- Cardio --
                   <form class="row justify-content-md-center" id="cardioForm">
                     <div class="col-6">
                       <div class="row g-0 justify-content-md-center">
@@ -114,20 +120,20 @@
                       </div>
                     </div>
                   </form> 
-                  <!--^^ Cardio ^^--> 
-                  <!-- Complete Button --> 
+                  <!--^^ Cardio ^^-- 
+                  <!-- Complete Button -- 
                   <div class="row justify-content-md-center" id="complete">
                     <div class="col-70">
                       <button type="button" class="btn btn-primary btn-lg">Complete</button>
                     </div>                
                   </div> 
-                  <!--^^ Complete Button ^^-->                 
+                  <!--^^ Complete Button ^^--                 
                 </div>
               </div>
             </div>
           </div>          
         </div>
-
+ -->
       </div>
     </div>
   </main>
