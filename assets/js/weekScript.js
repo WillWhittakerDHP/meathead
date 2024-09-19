@@ -36,13 +36,22 @@ headerWeekNumber.textContent = `${upperCaseMuscleGroup} Week One`;
 function cardColumnCreator(){
   
   let beginning = document.getElementById("appendHere");
+  beginning.classList.add('justify-content-center');
   let numberOfColumns = splitDesign[1].splitDaysTotal;
   let secondsLeft = splitDesign[0].timerLengthPerDay;
   
   for (let i = 0; i < numberOfColumns; i++) {
     
     let colAtIndex = document.createElement('div'); 
-    colAtIndex.classList.add('col-4');   
+    if(numberOfColumns === 3){
+      colAtIndex.classList.add('col-6');  
+    }
+    else if(numberOfColumns === 4){
+      colAtIndex.classList.add('col-6');  
+    }
+    else{
+      colAtIndex.classList.add('col-4');
+    }  
     
     let card = document.createElement('div');
     card.classList.add('card'); 
