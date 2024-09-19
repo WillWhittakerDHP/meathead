@@ -236,7 +236,9 @@ function cardColumnCreator(numberOfColumns, focusSets,accessorySets){
   }
 }
 
-cardColumnCreator(6,0,0);
+cardColumnCreator(3,0,0);
+
+
   function setValues() {
   userName = localStorage.getItem('userName');
   muscleGroup = localStorage.getItem('muscleGroup');
@@ -246,6 +248,7 @@ cardColumnCreator(6,0,0);
   percentagesForWeightAdvice = JSON.parse(localStorage.getItem('percentagesForWeightAdvice'));
   oneRepMax = JSON.parse(localStorage.getItem('oneRepMax'));
 return userName, muscleGroup, focusExercise, accessoryExercises, splitDesign, percentagesForWeightAdvice, oneRepMax;
+  }
   console.log(
   //   userName, 
   //   muscleGroup, 
