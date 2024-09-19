@@ -320,13 +320,14 @@ cardColumnCreator(6,0,0);
 let userName = "";
 let muscleGroup = "";
 let focusExercise = "";
-let accessoryExercises = [
-  {dayOne: ""},
-  {dayTwo: ""},
-  {dayThree: ""},
-  {dayFour: ""},
-  {dayFive:  ""}];
-let splitDesign =[
+// let accessoryExercises = [
+//   {dayOne: ""},
+//   {dayTwo: ""},
+//   {dayThree: ""},
+//   {dayFour: ""},
+//   {dayFive:  ""}];
+  let accessoryExercisesArray = [];
+  let splitDesign =[
   {timerLengthPerDay: ""},
   {splitDaysTotal: ""},
   {setsPerDay: ""},
@@ -341,12 +342,13 @@ function setValues() {
   userName = localStorage.getItem('userName');
   muscleGroup = localStorage.getItem('muscleGroup');
   focusExercise = localStorage.getItem('focusExercise');
-  accessoryExercises = JSON.parse(localStorage.getItem('accessoryExercises'));
+  // accessoryExercises = JSON.parse(localStorage.getItem('accessoryExercises'));
+  accessoryExercisesArray = JSON.parse(localStorage.getItem('accessoryExercisesArray'));
   splitDesign = JSON.parse(localStorage.getItem('splitDesign'));
   percentagesForWeightAdvice = JSON.parse(localStorage.getItem('percentagesForWeightAdvice'));
   oneRepMax = JSON.parse(localStorage.getItem('oneRepMax'));
-return userName, muscleGroup, focusExercise, accessoryExercises, splitDesign, percentagesForWeightAdvice, oneRepMax;
-  };
+  return userName, muscleGroup, focusExercise, accessoryExercisesArray, splitDesign, percentagesForWeightAdvice, oneRepMax;
+};
 
 setGreeting = function() {
 let headerUserName = document.getElementById('headerUserName');
@@ -386,8 +388,8 @@ function cardColumnCreator(){
     cardAtIndex.classList.add('col-4'); 
     cardAtIndex.setAttribute("id", "vertRightBorder");
     
-    let dayNameForCardAtIndex = document.createElement('h1');
-    dayNameForCardAtIndex.setAttribute("id", "dayTimer");
+    let dayNameForCardAtIndex = document.createElement('h4');
+    // dayNameForCardAtIndex.setAttribute("id", "dayTimer");
     dayNameForCardAtIndex.textContent = "Day " + (i+1);
     
 // Timer Sub-section
@@ -401,15 +403,15 @@ function cardColumnCreator(){
     let timerColumnOrienter = document.createElement('div');
     timerColumnOrienter.classList.add('col'); 
 
-    let timerLabel = document.createElement('h1');
-    timerLabel.setAttribute("id", "dayTimer");
+    let timerLabel = document.createElement('h4');
+    // timerLabel.setAttribute("id", "dayTimer");
     timerLabel.textContent = "Timer:";
 
     let timerActualContainer = document.createElement('div');
     timerActualContainer.classList.add('col');
 
-    let timer = document.createElement('p');
-    timer.setAttribute("id", "timer");
+    let timer = document.createElement('h4');
+    // timer.setAttribute("id", "timer");
     timer.textContent = secondsLeft;
     
     // Focus Exercise Button Container
@@ -417,12 +419,14 @@ function cardColumnCreator(){
     containerForTheFocusExerciseButtons.classList.add('container','text-center');
     containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
     containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
+    containerForTheFocusExerciseButtons.setAttribute("enabled","true");
+
     
     //Start Appending and Nesting Buttons
     cardAtIndex.appendChild(dayNameForCardAtIndex);
     labelForCardAtIndex.appendChild(cardAtIndex);
     outerContainer.appendChild(labelForCardAtIndex);
-
+    
     // /*
     //top row append
     labelForCardAtIndex.appendChild(timerSubSectionInsideLabel);
@@ -432,42 +436,50 @@ function cardColumnCreator(){
     timerRowOrienter.appendChild(timerActualContainer);
     timerActualContainer.appendChild(timer);
     // timerActualContainer.appendChild(timer_p);
-  
+
+    let nameOfTheFocusExercise = document.createElement('h5');
+    nameOfTheFocusExercise.textContent = focusExercise;
+    labelForCardAtIndex.appendChild(nameOfTheFocusExercise);
+    
+      const runTimer = function () {
+        const secondsPerSet = splitDesign[0].timerLengthPerDay;
+        let timerInterval = setInterval(function () {
+          secondsLeft--;
+          timer.textContent = secondsLeft;
+          if (secondsLeft === -1) {
+            clearInterval(timerInterval);
+            secondsLeft = secondsPerSet;
+            timer.textContent = secondsLeft;
+            setInterval(secondsPerSet);
+          }
+        }, 
+        1000);
+      };
+
+      //!AAAAAAAAAAAAAAAAAAAA
     // Buttons for Focus Exercise
   let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
-  const runTimer = function () {
-    const secondsPerSet = splitDesign[0].timerLengthPerDay;
-    let timerInterval = setInterval(function () {
-      secondsLeft--;
-      timer.textContent = secondsLeft;
-      if (secondsLeft === -1) {
-        clearInterval(timerInterval);
-        secondsLeft = secondsPerSet;
-        timer.textContent = secondsLeft;
-        setInterval(secondsPerSet);
-      }
-    }, 
-    1000);
-  };
+  let enabledValueofAllFocusButtonsAtIndexOnThisCard = [];
 
   for (let i = 0; i < numberOfFocusExerciseButtons; i++)
     {
-      const buttonClickLogic =function() {
-        if (!buttonAtIndex.dataset.disabled) {
-          runTimer(),
-          buttonAtIndex.setAttribute("disabled","true");
-        } else if (allFocusSetAdviceButtons.disabled = "true") {
-          containerForTheFocusExerciseButtons.setAttribute("disabled","true");
-        }
-      };
       let buttonAtIndex = document.createElement('button');
       buttonAtIndex.setAttribute("name", "button" + i);
+      buttonAtIndex.setAttribute("enabled", "true");
       // buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
       buttonAtIndex.textContent = `D`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+
       buttonAtIndex.addEventListener("click", function() {
-            buttonClickLogic()}
+        buttonAtIndex.setAttribute("enabled","false");
+        enabledValueofAllFocusButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
+        if (enabledValueofAllFocusButtonsAtIndexOnThisCard.length >= numberOfFocusExerciseButtons) {
+          containerForTheFocusExerciseButtons.setAttribute("enabled","false");
+        }
+        console.log(containerForTheFocusExerciseButtons.getAttribute("enabled"));
+        }
       );    
+
       containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
       outerContainer.appendChild(containerForTheFocusExerciseButtons);
     }
@@ -485,9 +497,9 @@ function cardColumnCreator(){
     let note_col = document.createElement('div');
     note_col.classList.add('col','align-items-center');
     
-    let note_label = document.createElement('label');
-    note_label.setAttribute("for", "notes"); 
-    note_label.setAttribute("id", "noteSize"); 
+    let note_label = document.createElement('h5');
+    // note_label.setAttribute("for", "notes"); 
+    // note_label.setAttribute("id", "noteSize"); 
     note_label.textContent = "Notes"
     
     let note_textarea = document.createElement('textarea');
@@ -499,46 +511,51 @@ function cardColumnCreator(){
     note_col.appendChild(note_label);
     note_col.appendChild(note_textarea);
 
-        // Accessory Exercise Button Container
-        let containerForTheAccessoryButtons = document.createElement('div');
-        containerForTheAccessoryButtons.classList.add('container','text-center');
-        containerForTheAccessoryButtons.setAttribute("id", "cardContent");
-        containerForTheAccessoryButtons.setAttribute("id","buttonGrid");
-        
-        //Start Appending and Nesting Buttons
-
-        // Buttons for Focus Exercise
-        let containerForTheAccessoryExerciseButtons = document.createElement('div');
-        containerForTheAccessoryExerciseButtons.classList.add('row','justify-content-md-center');
-        containerForTheAccessoryExerciseButtons.setAttribute("id", "accessoryGridTop"); 
-        containerForTheAccessoryExerciseButtons.textContent = "Accessory Exercises"
+    // Accessory Exercise Button Container
+    let containerForTheAccessoryExercises = document.createElement('div');
+    containerForTheAccessoryExercises.classList.add('container','text-center');
+    containerForTheAccessoryExercises.setAttribute("id", "cardContent");
+    containerForTheAccessoryExercises.setAttribute("id", "buttonGrid");
     
-         // APPEND CHILD ON BUTTON ROW WITH COL AND BUTTON
-        let acc_button_row = document.createElement('div');
-        acc_button_row.classList.add('row','gx-5');
-        acc_button_row.setAttribute("id", "accessoryGridBottom"); 
-        // End Accessory 
+    //Start Appending and Nesting Buttons
+
+    // Buttons for Focus Exercise
+    let containerForTheAccessoryExerciseButtons = document.createElement('div');
+    containerForTheAccessoryExerciseButtons.classList.add('row','justify-content-md-center');
+    containerForTheAccessoryExerciseButtons.setAttribute("id", "accessoryGridTop"); 
+    containerForTheAccessoryExerciseButtons.setAttribute("enabled","true");
+
+    let nameOfTheAccessoryExercise = document.createElement('h5');
+    nameOfTheAccessoryExercise.textContent = accessoryExercisesArray[i];
+    containerForTheAccessoryExerciseButtons.appendChild(nameOfTheAccessoryExercise)
+
+      // APPEND CHILD ON BUTTON ROW WITH COL AND BUTTON
+    let acc_button_row = document.createElement('div');
+    acc_button_row.classList.add('row','gx-5');
+    acc_button_row.setAttribute("id", "accessoryGridBottom"); 
+    // End Accessory 
 
   let numberOfAccessoryExerciseButtons = 3;
+  let enabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
 
   for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
     {
-      const buttonClickLogic =function() {
-        if (!buttonAtIndex.dataset.disabled) {
-          runTimer(),
-          buttonAtIndex.setAttribute("disabled","true");
-        } else if (allFocusSetAdviceButtons.disabled = "true") {
-          containerForTheAccessoryButtons.setAttribute("disabled","true");
-        }
-      };
       let buttonAtIndex = document.createElement('button');
       buttonAtIndex.setAttribute("name", "button" + i);
-      // buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
-      buttonAtIndex.textContent = `E`;
+      buttonAtIndex.setAttribute("enabled", "true");
+      buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+      
       buttonAtIndex.addEventListener("click", function() {
-            buttonClickLogic()}
+        buttonAtIndex.setAttribute("enabled","false");
+        enabledValueofAccessoryAllButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
+        if (enabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
+          containerForTheAccessoryExerciseButtons.setAttribute("enabled","false");
+        }
+        console.log(containerForTheAccessoryExerciseButtons.getAttribute("enabled"));
+        }
       );    
+      
       containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
       outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
   }
@@ -555,14 +572,14 @@ function cardColumnCreator(){
     let cardio_row = document.createElement('div');
     cardio_row.classList.add('row','g-0','justify-content-md-center');
 
-    let cardio_label = document.createElement('label');
+    let cardio_label = document.createElement('h5');
     cardio_label.classList.add('col');
-    cardio_label.setAttribute("for", "cardio"); 
-    cardio_label.setAttribute("style", "font-size: 35px;"); 
+    // cardio_label.setAttribute("for", "cardio"); 
+    // cardio_label.setAttribute("style", "font-size: 35px;"); 
     cardio_label.textContent = "Cardio";
 
     let cardio_button = document.createElement('input', 'time');
-    cardio_button.classList.add('btn','btn-outline-primary');
+    // cardio_button.classList.add('btn','btn-outline-primary');
     cardio_button.setAttribute("id", "cardio"); 
 
   outerContainer.appendChild(cardio_form)
