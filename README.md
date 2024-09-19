@@ -1,4 +1,4 @@
-# meathead
-repo for the first bootcamp project
-
-
+# Welcome to the Meathead Project 💪
+## Description 😒 ➡️ 💪😁
+## Technologies used 
+## Screenshots 📷😎
