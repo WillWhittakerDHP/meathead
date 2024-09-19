@@ -45,7 +45,8 @@ function cardColumnCreator(){
     colAtIndex.classList.add('col-4');   
     
     let card = document.createElement('div');
-    card.classList.add('card');   
+    card.classList.add('card'); 
+    card.setAttribute("id", "card");  
     
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body'); 
