@@ -167,7 +167,7 @@ function submitForm(event) {
   case (splitDesign === ""):
     makeAlert("Please select a split design");
     break;
-  case (oneRepMax === ""):
+  case (isNaN(parseInt(document.getElementById("oneRepMaxSetter").value))):
     makeAlert("Please enter your one rep max");
     break;
   default:
@@ -180,7 +180,13 @@ function submitForm(event) {
     localStorage.setItem('oneRepMax', JSON.stringify(oneRepMax));
     break;
   };
-  redirectPage()
+  console.log(parseInt(document.getElementById("oneRepMaxSetter").value));
+  if(document.getElementById("userNameGetter").value === "" || document.querySelector('#muscleGroupSelector').value === "" || document.querySelector('#splitDesignSelector').value === "" || isNaN(parseInt(document.getElementById("oneRepMaxSetter").value))){
+    
+  }  
+  else{   
+    redirectPage()
+  }
 };  
 
   
