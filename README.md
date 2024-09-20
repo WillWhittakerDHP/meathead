@@ -18,6 +18,6 @@ Tired of messing with numbers? Ready to accept you're really just a meathead? Sk
 ### Landing Page
 ![meatheadpicture](https://github.com/user-attachments/assets/b7de33cd-1e55-4f1b-a551-7c2b4a2ce4e8)
 ### Week Page
-![meatheadpicture2](https://github.com/user-attachments/assets/82554a72-de3e-4f0e-a578-a24e6d75cf0a)
+![meatheadpicture2](https://github.com/user-attachments/assets/c160fa0f-f840-4ec5-a197-19623138e8ad)
 ## Link 
 https://willwhittakerdhp.github.io/meathead/
