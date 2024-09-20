@@ -217,9 +217,21 @@ function cardColumnCreator(){
     // End Accessory 
 
   let numberOfAccessoryExerciseButtons = 3;
-  
+
+//   <div class="image" title="platemath">
+//     <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"> 
+// </div>
+
   for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
     {
+      let hoverButton = document.createElement('div');
+      hoverButton.setAttribute("class", "image")
+      hoverButton.setAttribute("title", "platemath")
+
+      // /*
+console.log(Math.round(((oneRepMax[1].accessoryOneRepMax - 45) / 45) / 2))
+      // */
+
       let buttonAtIndex = document.createElement('button');
       const disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
       buttonAtIndex.setAttribute("name", "button" + i);
@@ -239,7 +251,8 @@ function cardColumnCreator(){
         }
       );    
       
-      containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
+      hoverButton.appendChild(buttonAtIndex);
+      containerForTheAccessoryExerciseButtons.appendChild(hoverButton);
       outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
   }
   outerContainer.appendChild(containerForTheAccessoryExerciseButtons)
