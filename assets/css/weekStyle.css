@@ -8,6 +8,8 @@
   --disabledButtonColor: rgb(111, 149, 205);
   --enabledSectionColor: rgb(111, 149, 205);
   --disabledSectionColor: rgb(188, 212, 248);
+  --textOnLightBackground:  rgba(68, 88, 119, 1);
+  --textOnDarkBackground: rgb(120, 158, 215);
 }
 
 .dropdown-menu{
@@ -20,8 +22,7 @@
 .card, 
 .container{
   border-style: none;
-  background-color: none;
-  justify-content: center;
+  background-color: rgba(238, 238, 247, 1);
 }
 
 button{
@@ -47,12 +48,26 @@ p
   border-color: #285e8e; /*set the color you want here*/
 }
 
+.image {
+  position: relative;
+}
+  
+.image:hover:after {
+  position: absolute;
+  content: attr(title);
+  display: inline-block;
+  left: 0px;
+  top: 0px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+}
 
 /* Ids */
 #border{
   border: solid;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: var(--enabledSectionColor);
 }
 #cardContent{
   margin: 15px 0px 0px 0px;
@@ -62,7 +77,7 @@ p
 #vertRightBorder{
   border-bottom-style: solid;
   background-color: var(--enabledSectionColor);
-
+  border-radius: 17px 0px 0px 0px;
 }
 #vertLeftBorder{
   border-left-style: solid;
@@ -70,6 +85,7 @@ p
   vertical-align: baseline;
   align-items: baseline;
   background-color: var(--enabledSectionColor);
+  border-radius: 0px 17px 0px 0px;
 }
 
 #timer{
@@ -84,13 +100,18 @@ p
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
 }
 
 #buttonGridBottom{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
+}
 
+#buttonGrid{
+  background-color: var(--enabledSectionColor);
 }
 
 #notesForm{
@@ -127,6 +148,10 @@ p
 
 #cardioForm{
   background-color: var(--enabledSectionColor);
+  border-radius: 0px 0px 17px 17px;
+}
+#cardioInput{
+  background-color: white;
 }
 #complete{
   padding-top: 10px;
@@ -145,3 +170,12 @@ p
 #noteSize{
   font-size: var(--notesSize);
 }
+
+#bigContainer{
+  background-color: transparent;
+}
+
+#card{
+  background-color: transparent;
+}
+

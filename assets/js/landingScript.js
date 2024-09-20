@@ -11,12 +11,6 @@ function getUserName(event) {
 
 let muscleGroup = "";
 let focusExercise = "";
-// let accessoryExercises = [
-//     {dayOne: ""},
-//     {dayTwo: ""},
-//     {dayThree: ""},
-//     {dayFour: ""},
-//     {dayFive:  ""}];
 let accessoryExercisesArray = [];
   
 const muscleGroupSelector = document.querySelector('#muscleGroupSelector');
@@ -27,67 +21,31 @@ function selectMuscleGroup() {
     case "chest":
       muscleGroup = muscleGroupSelector.value;
       focusExercise = "Bench Press";
-      // accessoryExercises = [
-      //   {dayOne: "Tricep Extension"},
-      //   {dayTwo: "Dumbbell Fly"},
-      //   {dayThree: "Incline Bench Press"},
-      //   {dayFour: "Dumbbell Press"},
-      //   {dayFive:  "Chest Press"}];
       accessoryExercisesArray = ["Tricep Extension", "Dumbbell Fly", "Incline Bench Press", "Dumbbell Press", "Chest Press"];
       break;
     case "legs":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Squat";
-        // accessoryExercises = [
-        //   {dayOne: "Leg Press"},
-        //   {dayTwo: "Leg Curl"},
-        //   {dayThree: "Lunges"},
-        //   {dayFour: "Leg Extension"},
-        //   {dayFive:  "Calf Raise"}];
         accessoryExercisesArray = ["Leg Press", "Leg Curl", "Lunges", "Leg Extension", "Calf Raise"];
           break;
     case "back":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Deadlift";
-        // accessoryExercises = [
-        //   {dayOne: "Romanian Deadlift"}, 
-        //   {dayTwo: "Leg Curl"},
-        //   {dayThree: "Pull Up"},
-        //   {dayFour: "Bent Over Row"},
-        //   {dayFive:  "Lat Pulldown"}];
         accessoryExercisesArray = ["Romanian Deadlift", "Leg Curl", "Pull Up", "Bent Over Row", "Lat Pulldown"];
           break;
     case "shoulders":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Overhead Press";
-        // accessoryExercises = [
-        //   {dayOne: "Lateral Raise"}, 
-        //   {dayTwo: "Front Raise"},
-        //   {dayThree: "Rear Delt Fly"},
-        //   {dayFour: "Shrug"},
-        //   {dayFive:  "Arnold Press"}];
         accessoryExercisesArray = ["Lateral Raise", "Front Raise", "Rear Delt Fly", "Shrug", "Arnold Press"];
           break;
     case "arms":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Bicep Curl";
-        // accessoryExercises = [
-        //   {dayOne: "Tricep Extension"}, 
-        //   {dayTwo: "Hammer Curl"},
-        //   {dayThree: "Skull Crusher"},
-        //   {dayFour: "Preacher Curl"},
-        //   {dayFive:  "Concentration Curl"}]
         accessoryExercisesArray = ["Tricep Extension", "Hammer Curl", "Skull Crusher", "Preacher Curl", "Concentration Curl"];
           break;
     case "core":
       muscleGroup = muscleGroupSelector.value;
         focusExercise = "Plank";
-        // accessoryExercises = [
-        //   {dayOne: "Russian Twist"}, 
-        //   {dayTwo: "Leg Raise"},
-        //   {dayThree: "Bicycle Crunch"},
-        //   {dayFour: "Side Plank"},
-        //   {dayFive:  "V-Up"}]
         accessoryExercisesArray = ["Russian Twist", "Leg Raise", "Bicycle Crunch", "Side Plank", "V-Up"];
           break;
         };
@@ -148,7 +106,8 @@ function setOneRepMax(event) {
     //   alert("Please enter a number");
     //   break;
     case (oneRepMaxSetter <= 0):
-      alert("Please enter a positive number");
+      makeAlert("Please enter a positive number");
+      event.preventDefault();
       break;
     case (oneRepMaxSetter <= 135):
     oneRepMax = [
@@ -176,7 +135,7 @@ function setOneRepMax(event) {
       {accessoryOneRepMax: 35}];
     break;
   case (oneRepMaxSetter > 495):
-    alert("Please enter a reasonable number, you Meathead");
+    makeAlert("Please enter a reasonable number, you Meathead");
     event.preventDefault();
     break;
 };
@@ -200,37 +159,38 @@ function submitForm(event) {
   //   displayMessage('success', 'Registered successfully');
     switch (true) {
   case (userName === ""):
-    alert("Please enter a username");
+    makeAlert("Please enter a username");
+    event.preventDefault();
     break;
   case (muscleGroup === ""):
-    alert("Please select a muscle group");
+    makeAlert("Please select a muscle group");
+    event.preventDefault();
     break;
   case (splitDesign === ""):
-    alert("Please select a split design");
+    makeAlert("Please select a split design");
+    event.preventDefault();
     break;
-  case (oneRepMax === ""):
-    alert("Please enter your one rep max");
+  case (isNaN(parseInt(document.getElementById("oneRepMaxSetter").value))):
+    makeAlert("Please enter your one rep max");
+    event.preventDefault();
     break;
   default:
-    // console.log(
-      // userName, 
-      // focusExercise, 
-      // accessoryExercises, 
-      // splitDesign, 
-      // percentagesForWeightAdvice, 
-      // oneRepMax
-    // );
     localStorage.setItem('userName', userName);
     localStorage.setItem('muscleGroup', muscleGroup);
     localStorage.setItem('focusExercise', focusExercise);
-    // localStorage.setItem('accessoryExercises', JSON.stringify(accessoryExercises));
     localStorage.setItem('accessoryExercisesArray', JSON.stringify(accessoryExercisesArray));
     localStorage.setItem('splitDesign', JSON.stringify(splitDesign));
     localStorage.setItem('percentagesForWeightAdvice', JSON.stringify(percentagesForWeightAdvice));
     localStorage.setItem('oneRepMax', JSON.stringify(oneRepMax));
     break;
   };
-  redirectPage()
+  console.log(parseInt(document.getElementById("oneRepMaxSetter").value));
+  if(document.getElementById("userNameGetter").value === "" || document.querySelector('#muscleGroupSelector').value === "" || document.querySelector('#splitDesignSelector').value === "" || isNaN(parseInt(document.getElementById("oneRepMaxSetter").value))){
+    
+  }  
+  else{   
+    redirectPage()
+  }
 };  
 
   
@@ -238,3 +198,53 @@ function submitForm(event) {
       redirectURL = "./weekOneIndex.html";  
       location.assign(redirectURL);
   };
+
+function makeAlert(text){
+  let modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  let modalDialog = document.createElement('div');
+  modalDialog.classList.add('modal-dialog');
+
+  let modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+
+  let modalHeader = document.createElement('div');
+  modalHeader.classList.add('modal-header');
+
+  let modalTitle = document.createElement('h5');
+  modalTitle.classList.add('modal-title');
+  modalTitle.textContent = "Error";
+
+  let X = document.createElement('button');
+  X.classList.add('btn-close');
+  X.setAttribute("type", "button");
+  X.setAttribute("data-bs-dismiss", "modal");
+  X.setAttribute("aria-label", "Close"); 
+
+  let modalBody = document.createElement('div');
+  modalBody.classList.add('modal-body');
+
+  let modalTextContent = document.createElement('p');
+  modalTextContent.textContent = text;
+
+  //let modalFooter = document.createElement('div');
+  //modalFooter.classList.add('modal-footer');
+
+  modal.appendChild(modalDialog);
+  modalDialog.appendChild(modalContent);  
+
+  modalContent.appendChild(modalHeader);
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(X);
+
+  modalContent.appendChild(modalBody);
+  modalBody.appendChild(modalTextContent);
+  //modal.appendChild(modalFooter);
+
+  
+  var myModal = new bootstrap.Modal(modal, {
+    keyboard: false
+  })
+  myModal.show()
+}
