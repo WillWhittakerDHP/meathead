@@ -8,6 +8,8 @@
   --disabledButtonColor: rgb(111, 149, 205);
   --enabledSectionColor: rgb(111, 149, 205);
   --disabledSectionColor: rgb(188, 212, 248);
+  --textOnLightBackground:  rgba(68, 88, 119, 1);
+  --textOnDarkBackground: rgb(120, 158, 215);
 }
 
 .dropdown-menu{
@@ -26,7 +28,7 @@
 button{
   justify-content: right;
   background-color: var(--enabledButtonColor);
-  color: rgba(68, 88, 119, 1);
+  color: var(--textOnLightBackground);
 }
 
 button:disabled{

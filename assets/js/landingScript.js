@@ -160,15 +160,19 @@ function submitForm(event) {
     switch (true) {
   case (userName === ""):
     makeAlert("Please enter a username");
+    event.preventDefault();
     break;
   case (muscleGroup === ""):
     makeAlert("Please select a muscle group");
+    event.preventDefault();
     break;
   case (splitDesign === ""):
     makeAlert("Please select a split design");
+    event.preventDefault();
     break;
   case (isNaN(parseInt(document.getElementById("oneRepMaxSetter").value))):
     makeAlert("Please enter your one rep max");
+    event.preventDefault();
     break;
   default:
     localStorage.setItem('userName', userName);
