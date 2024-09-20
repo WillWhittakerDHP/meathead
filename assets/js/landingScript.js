@@ -106,7 +106,7 @@ function setOneRepMax(event) {
     //   alert("Please enter a number");
     //   break;
     case (oneRepMaxSetter <= 0):
-      alert("Please enter a positive number");
+      makeAlert("Please enter a positive number");
       break;
     case (oneRepMaxSetter <= 135):
     oneRepMax = [
@@ -134,7 +134,7 @@ function setOneRepMax(event) {
       {accessoryOneRepMax: 35}];
     break;
   case (oneRepMaxSetter > 495):
-    alert("Please enter a reasonable number, you Meathead");
+    makeAlert("Please enter a reasonable number, you Meathead");
     event.preventDefault();
     break;
 };
@@ -158,16 +158,16 @@ function submitForm(event) {
   //   displayMessage('success', 'Registered successfully');
     switch (true) {
   case (userName === ""):
-    alert("Please enter a username");
+    makeAlert("Please enter a username");
     break;
   case (muscleGroup === ""):
-    alert("Please select a muscle group");
+    makeAlert("Please select a muscle group");
     break;
   case (splitDesign === ""):
-    alert("Please select a split design");
+    makeAlert("Please select a split design");
     break;
   case (oneRepMax === ""):
-    alert("Please enter your one rep max");
+    makeAlert("Please enter your one rep max");
     break;
   default:
     localStorage.setItem('userName', userName);
@@ -187,3 +187,53 @@ function submitForm(event) {
       redirectURL = "./weekOneIndex.html";  
       location.assign(redirectURL);
   };
+
+function makeAlert(text){
+  let modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  let modalDialog = document.createElement('div');
+  modalDialog.classList.add('modal-dialog');
+
+  let modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+
+  let modalHeader = document.createElement('div');
+  modalHeader.classList.add('modal-header');
+
+  let modalTitle = document.createElement('h5');
+  modalTitle.classList.add('modal-title');
+  modalTitle.textContent = "Error";
+
+  let X = document.createElement('button');
+  X.classList.add('btn-close');
+  X.setAttribute("type", "button");
+  X.setAttribute("data-bs-dismiss", "modal");
+  X.setAttribute("aria-label", "Close"); 
+
+  let modalBody = document.createElement('div');
+  modalBody.classList.add('modal-body');
+
+  let modalTextContent = document.createElement('p');
+  modalTextContent.textContent = text;
+
+  //let modalFooter = document.createElement('div');
+  //modalFooter.classList.add('modal-footer');
+
+  modal.appendChild(modalDialog);
+  modalDialog.appendChild(modalContent);  
+
+  modalContent.appendChild(modalHeader);
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(X);
+
+  modalContent.appendChild(modalBody);
+  modalBody.appendChild(modalTextContent);
+  //modal.appendChild(modalFooter);
+
+  
+  var myModal = new bootstrap.Modal(modal, {
+    keyboard: false
+  })
+  myModal.show()
+}
