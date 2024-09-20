@@ -36,13 +36,22 @@ headerWeekNumber.textContent = `${upperCaseMuscleGroup} Week One`;
 function cardColumnCreator(){
   
   let beginning = document.getElementById("appendHere");
+  beginning.classList.add('justify-content-center');
   let numberOfColumns = splitDesign[1].splitDaysTotal;
   let secondsLeft = splitDesign[0].timerLengthPerDay;
   
   for (let i = 0; i < numberOfColumns; i++) {
     
     let colAtIndex = document.createElement('div'); 
-    colAtIndex.classList.add('col-4');   
+    if(numberOfColumns === 3){
+      colAtIndex.classList.add('col-6');  
+    }
+    else if(numberOfColumns === 4){
+      colAtIndex.classList.add('col-6');  
+    }
+    else{
+      colAtIndex.classList.add('col-4');
+    }  
     
     let card = document.createElement('div');
     card.classList.add('card'); 
@@ -196,7 +205,6 @@ function cardColumnCreator(){
     let containerForTheAccessoryExerciseButtons = document.createElement('div');
     containerForTheAccessoryExerciseButtons.classList.add('row','justify-content-md-center');
     containerForTheAccessoryExerciseButtons.setAttribute("id", "accessoryGridTop"); 
-    containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
 
     let nameOfTheAccessoryExercise = document.createElement('h5');
     nameOfTheAccessoryExercise.textContent = accessoryExercisesArray[i];
@@ -213,18 +221,21 @@ function cardColumnCreator(){
   for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
     {
       let buttonAtIndex = document.createElement('button');
-      let disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
+      const disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
       buttonAtIndex.setAttribute("name", "button" + i);
       buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
       
       buttonAtIndex.addEventListener("click", function() {
         buttonAtIndex.setAttribute("disabled","true");
+        console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
         disabledValueofAllAccessoryButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard)
+        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length)
         if (disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
           containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
+          console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
         }
-        console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
         }
       );    
       
@@ -253,12 +264,27 @@ function cardColumnCreator(){
     let cardio_button = document.createElement('input', 'time');
     // cardio_button.classList.add('btn','btn-outline-primary');
     cardio_button.setAttribute("id", "cardio"); 
-
-  outerContainer.appendChild(cardio_form)
-  cardio_form.appendChild(cardio_col);
-  cardio_col.appendChild(cardio_row);
-  cardio_row.appendChild(cardio_label);
-  cardio_row.appendChild(cardio_button);
+    
+    let complete_row = document.createElement('div');
+    complete_row.classList.add('row','justify-content-md-center');
+    complete_row.setAttribute("id", "complete"); 
+    
+    let complete_col = document.createElement('div');
+    complete_col.classList.add('col-70');
+    
+    let complete_button = document.createElement('button');
+    complete_button.classList.add('btn','btn-primary','btn-lg');
+    complete_button.textContent = "Complete";
+    
+    outerContainer.appendChild(cardio_form)
+    cardio_form.appendChild(cardio_col);
+    cardio_col.appendChild(cardio_row);
+    cardio_row.appendChild(cardio_label);
+    cardio_row.appendChild(cardio_button);
+    
+    outerContainer.appendChild(complete_row);
+    complete_row.appendChild(complete_col);
+    complete_col.appendChild(complete_button);
 };
 };
 
@@ -269,4 +295,3 @@ function init() {
 };
 
 init();
-
