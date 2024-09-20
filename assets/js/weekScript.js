@@ -165,7 +165,7 @@ function cardColumnCreator(){
       containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
       outerContainer.appendChild(containerForTheFocusExerciseButtons);
     }
-// End Focus Exercise Button Container
+    // End Focus Exercise Button Container
 
     cardBody.appendChild(outerContainer);
     card.appendChild(cardBody);
@@ -215,94 +215,110 @@ function cardColumnCreator(){
     acc_button_row.classList.add('row','gx-5');
     acc_button_row.setAttribute("id", "accessoryGridBottom"); 
     // End Accessory 
-
-  let numberOfAccessoryExerciseButtons = 3;
-
-//   <div class="image" title="platemath">
-//     <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"> 
-// </div>
-
-  for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
-    {
-      let hoverButton = document.createElement('div');
-      hoverButton.setAttribute("class", "image")
-      hoverButton.setAttribute("title", "platemath")
-
-      // /*
-console.log((oneRepMax[0].focusOneRepMax - 45));
-console.log(((oneRepMax[0].focusOneRepMax - 45) / 45));
-console.log(Math.round(((oneRepMax[0].focusOneRepMax - 45) / 45) / 2));
-      // */
-
+    
+    let numberOfAccessoryExerciseButtons = 3;
+    
+    let buttonAtIndexMaker = function() {
+      let buttonClick = function() {
+        buttonAtIndex.setAttribute("disabled","true");
+      };
+      
       let buttonAtIndex = document.createElement('button');
-      const disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
       buttonAtIndex.setAttribute("name", "button" + i);
       buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+      buttonAtIndex.addEventListener("click", buttonClick)
       
-      buttonAtIndex.addEventListener("click", function() {
-        buttonAtIndex.setAttribute("disabled","true");
-        console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
-        disabledValueofAllAccessoryButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
-        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard)
-        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length)
-        if (disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
-          containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
-          console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
-        }
-        }
-      );    
-      
-      hoverButton.appendChild(buttonAtIndex);
-      containerForTheAccessoryExerciseButtons.appendChild(hoverButton);
+      let hoverButtonAdviceMaker = function() {
+        for (let i = 0; i < numberOfAccessoryExerciseButtons; i++) {
+          let platesNeeded =[];
+          let plateOrder = [45, 25, 10, 5, 2.5];
+          let remainingWeight = [oneRepMax[0].focusOneRepMax - 45];
+          let nearestPlatesWithoutGoingOver = remainingWeight[i] / plateOrder[i];
+          let round = function(n,to) {
+            Math.floor(n/to + 0.5) * to};
+          let nearestPlatesRoundedDown = round(nearestPlatesWithoutGoingOver,2);
+          let newRemainingWeight = remainingWeight[i] - (nearestPlatesRoundedDown * plateOrder[i]);
+          while (remainingWeight.length < plateOrder.length) 
+            {
+              if (newRemainingWeight > 0) {
+                newRemainingWeight = remainingWeight[i] - (nearestPlatesRoundedDown * plateOrder[i]);
+                remainingWeight.push(newRemainingWeight);
+                platesNeeded.push(nearestPlatesRoundedDown);
+              } else {
+                newRemainingWeight = remainingWeight[i];
+                remainingWeight.push(0);
+                platesNeeded.push(0);
+              };
+              i++;
+            };
+          let hoverButtonAdvice = (`For this weight you need to add:
+            ${platesNeeded[0]} ${plateOrder[0]}s
+            ${platesNeeded[1]} ${plateOrder[1]}s
+            ${platesNeeded[2]} ${plateOrder[2]}s
+            ${platesNeeded[3]} ${plateOrder[3]}s
+            ${platesNeeded[4]} ${plateOrder[4]}s`);
+          let hoverButton = document.createElement('div');
+          hoverButton.setAttribute("class", "image");
+          hoverButton.setAttribute("title", hoverButtonAdvice);
+          hoverButton.appendChild(buttonAtIndex);
+          containerForTheAccessoryExerciseButtons.appendChild(hoverButton);
+          };
+        };
+        hoverButtonAdviceMaker();
+        // hoverButton.textContent(hoverButtonAdvice);
+        console.log("ding")
+        return buttonAtIndex;
+      };
+      buttonAtIndexMaker();
       outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
-  }
-  outerContainer.appendChild(containerForTheAccessoryExerciseButtons)
-  containerForTheAccessoryExerciseButtons.appendChild(acc_button_row);
-
-  let cardio_form = document.createElement('form');
-    cardio_form.classList.add('row','justify-content-md-center');
-    cardio_form.setAttribute("id", "cardioForm"); 
-
-    let cardio_col = document.createElement('div');
-    cardio_col.classList.add('col-6');
-
-    let cardio_row = document.createElement('div');
-    cardio_row.classList.add('row','g-0','justify-content-md-center');
-
-    let cardio_label = document.createElement('h5');
-    cardio_label.classList.add('col');
-    // cardio_label.setAttribute("for", "cardio"); 
-    // cardio_label.setAttribute("style", "font-size: 35px;"); 
-    cardio_label.textContent = "Cardio";
-
-    let cardio_button = document.createElement('input', 'time');
-    // cardio_button.classList.add('btn','btn-outline-primary');
-    cardio_button.setAttribute("id", "cardioInput"); 
-    cardio_form.setAttribute("id", "cardioForm"); 
-    
-    let complete_row = document.createElement('div');
-    complete_row.classList.add('row','justify-content-md-center');
-    complete_row.setAttribute("id", "complete"); 
-    
-    let complete_col = document.createElement('div');
-    complete_col.classList.add('col-70');
-    
-    let complete_button = document.createElement('button');
-    complete_button.classList.add('btn','btn-primary','btn-lg');
-    complete_button.textContent = "Complete";
-    
-    outerContainer.appendChild(cardio_form)
-    cardio_form.appendChild(cardio_col);
-    cardio_col.appendChild(cardio_row);
-    cardio_row.appendChild(cardio_label);
-    cardio_row.appendChild(cardio_button);
-    
-    outerContainer.appendChild(complete_row);
-    complete_row.appendChild(complete_col);
-    complete_col.appendChild(complete_button);
-};
-};
+      outerContainer.appendChild(containerForTheAccessoryExerciseButtons)
+      containerForTheAccessoryExerciseButtons.appendChild(acc_button_row);
+      
+      
+      let cardio_form = document.createElement('form');
+      cardio_form.classList.add('row','justify-content-md-center');
+      cardio_form.setAttribute("id", "cardioForm"); 
+      
+      let cardio_col = document.createElement('div');
+      cardio_col.classList.add('col-6');
+      
+      let cardio_row = document.createElement('div');
+      cardio_row.classList.add('row','g-0','justify-content-md-center');
+      
+      let cardio_label = document.createElement('h5');
+      cardio_label.classList.add('col');
+      // cardio_label.setAttribute("for", "cardio"); 
+      // cardio_label.setAttribute("style", "font-size: 35px;"); 
+      cardio_label.textContent = "Cardio";
+      
+      let cardio_button = document.createElement('input', 'time');
+      // cardio_button.classList.add('btn','btn-outline-primary');
+      cardio_button.setAttribute("id", "cardioInput"); 
+      cardio_form.setAttribute("id", "cardioForm"); 
+      
+      let complete_row = document.createElement('div');
+      complete_row.classList.add('row','justify-content-md-center');
+      complete_row.setAttribute("id", "complete"); 
+      
+      let complete_col = document.createElement('div');
+      complete_col.classList.add('col-70');
+      
+      let complete_button = document.createElement('button');
+      complete_button.classList.add('btn','btn-primary','btn-lg');
+      complete_button.textContent = "Complete";
+      
+      outerContainer.appendChild(cardio_form)
+      cardio_form.appendChild(cardio_col);
+      cardio_col.appendChild(cardio_row);
+      cardio_row.appendChild(cardio_label);
+      cardio_row.appendChild(cardio_button);
+      
+      outerContainer.appendChild(complete_row);
+      complete_row.appendChild(complete_col);
+      complete_col.appendChild(complete_button);
+    };
+  };
 
 function init() {
   setValues();
@@ -311,3 +327,10 @@ function init() {
 };
 
 init();
+
+// let disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
+// disabledValueofAllAccessoryButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+// if (disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
+  //   containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
+  //   console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
+  // };
