@@ -107,6 +107,7 @@ function setOneRepMax(event) {
     //   break;
     case (oneRepMaxSetter <= 0):
       makeAlert("Please enter a positive number");
+      event.preventDefault();
       break;
     case (oneRepMaxSetter <= 135):
     oneRepMax = [
