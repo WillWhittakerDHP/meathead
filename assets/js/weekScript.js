@@ -119,7 +119,7 @@ function cardColumnCreator(){
     containerForTheFocusExerciseButtons.classList.add('container','text-center');
     containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
     containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
-    containerForTheFocusExerciseButtons.setAttribute("enabled","true");
+    containerForTheFocusExerciseButtons.setAttribute("disabled","true");
 
     
     //Start Appending and Nesting Buttons
@@ -143,24 +143,21 @@ function cardColumnCreator(){
     
     // Buttons for Focus Exercise
     let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
-    let enabledValueofAllFocusButtonsAtIndexOnThisCard = [];
+    let disabledValueofAllFocusButtonsAtIndexOnThisCard = [];
     
     for (let i = 0; i < numberOfFocusExerciseButtons; i++)
       {
       let buttonAtIndex = document.createElement('button');
       buttonAtIndex.setAttribute("name", "button" + i);
-      // buttonAtIndex.setAttribute("enabled", "true");
       buttonAtIndex.textContent = `Set ` + (i+1) + `: \n${splitDesign[3].repAdvice} reps at ${parseFloat(percentagesForWeightAdvice).toFixed(0) * parseFloat (oneRepMax[0].focusOneRepMax)} lbs`;
-      // buttonAtIndex.textContent = `D`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
 
       buttonAtIndex.addEventListener("click", function() {
         buttonAtIndex.setAttribute("disabled","true");
         runTimer();
-        console.log(buttonAtIndex.getAttribute("disabled"));
-        enabledValueofAllFocusButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
-        if (enabledValueofAllFocusButtonsAtIndexOnThisCard.length >= numberOfFocusExerciseButtons) {
-          containerForTheFocusExerciseButtons.setAttribute("enabled","false");
+        disabledValueofAllFocusButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+        if (disabledValueofAllFocusButtonsAtIndexOnThisCard.length >= numberOfFocusExerciseButtons) {
+          containerForTheFocusExerciseButtons.setAttribute("disabled","false");
         }
         }
       );    
@@ -208,7 +205,6 @@ function cardColumnCreator(){
     let containerForTheAccessoryExerciseButtons = document.createElement('div');
     containerForTheAccessoryExerciseButtons.classList.add('row','justify-content-md-center');
     containerForTheAccessoryExerciseButtons.setAttribute("id", "accessoryGridTop"); 
-    containerForTheAccessoryExerciseButtons.setAttribute("enabled","true");
 
     let nameOfTheAccessoryExercise = document.createElement('h5');
     nameOfTheAccessoryExercise.textContent = accessoryExercisesArray[i];
@@ -221,23 +217,25 @@ function cardColumnCreator(){
     // End Accessory 
 
   let numberOfAccessoryExerciseButtons = 3;
-  let enabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
-
+  
   for (let i = 0; i < numberOfAccessoryExerciseButtons; i++)
     {
       let buttonAtIndex = document.createElement('button');
+      const disabledValueofAllAccessoryButtonsAtIndexOnThisCard = [];
       buttonAtIndex.setAttribute("name", "button" + i);
-      buttonAtIndex.setAttribute("enabled", "true");
       buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
       buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
       
       buttonAtIndex.addEventListener("click", function() {
-        buttonAtIndex.setAttribute("enabled","false");
-        enabledValueofAccessoryAllButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('enabled'));
-        if (enabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
-          containerForTheAccessoryExerciseButtons.setAttribute("enabled","false");
+        buttonAtIndex.setAttribute("disabled","true");
+        console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
+        disabledValueofAllAccessoryButtonsAtIndexOnThisCard.push(buttonAtIndex.getAttribute('disabled'));
+        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard)
+        console.log(disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length)
+        if (disabledValueofAllAccessoryButtonsAtIndexOnThisCard.length >= numberOfAccessoryExerciseButtons) {
+          containerForTheAccessoryExerciseButtons.setAttribute("disabled","true");
+          console.log(containerForTheAccessoryExerciseButtons.getAttribute("disabled"));
         }
-        console.log(containerForTheAccessoryExerciseButtons.getAttribute("enabled"));
         }
       );    
       
@@ -266,12 +264,27 @@ function cardColumnCreator(){
     let cardio_button = document.createElement('input', 'time');
     // cardio_button.classList.add('btn','btn-outline-primary');
     cardio_button.setAttribute("id", "cardio"); 
-
-  outerContainer.appendChild(cardio_form)
-  cardio_form.appendChild(cardio_col);
-  cardio_col.appendChild(cardio_row);
-  cardio_row.appendChild(cardio_label);
-  cardio_row.appendChild(cardio_button);
+    
+    let complete_row = document.createElement('div');
+    complete_row.classList.add('row','justify-content-md-center');
+    complete_row.setAttribute("id", "complete"); 
+    
+    let complete_col = document.createElement('div');
+    complete_col.classList.add('col-70');
+    
+    let complete_button = document.createElement('button');
+    complete_button.classList.add('btn','btn-primary','btn-lg');
+    complete_button.textContent = "Complete";
+    
+    outerContainer.appendChild(cardio_form)
+    cardio_form.appendChild(cardio_col);
+    cardio_col.appendChild(cardio_row);
+    cardio_row.appendChild(cardio_label);
+    cardio_row.appendChild(cardio_button);
+    
+    outerContainer.appendChild(complete_row);
+    complete_row.appendChild(complete_col);
+    complete_col.appendChild(complete_button);
 };
 };
 
@@ -282,4 +295,3 @@ function init() {
 };
 
 init();
-
