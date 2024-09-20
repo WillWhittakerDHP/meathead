@@ -1,9 +1,13 @@
 # Welcome to the Meathead Project 💪
 ## Description 😒 ➡️ 💪😁
 Tired of messing with numbers? Ready to accept your really just a meathead? Skip the thinking and come on down to your all in one site to lift heavy and get those gains.
+
 **Automatic Exercise Suggestions:** Get a good start at the gym and don't waste any time with bad routines.
+
 **Keep Track of your Progress:** Best practice is to keep intutive notes and we'll keep them all in one place. 
+
 **Use Our Timers:** Let us do the thinking meathead, lift heavy for the optimal about of time. 
+
 **Make Gains on 6 different Muscle Groups:** All those features for your whole body. *(We don't skip leg day here!)*
 ## Technologies used 
 - HTML
