@@ -46,11 +46,26 @@ p
   border-color: #285e8e; /*set the color you want here*/
 }
 
+.image {
+  position: relative;
+}
+  
+.image:hover:after {
+  position: absolute;
+  content: attr(title);
+  display: inline-block;
+  left: 0px;
+  top: 0px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+}
 
 /* Ids */
 #border{
   border: solid;
   border-radius: 20px;
+  background-color: var(--enabledSectionColor);
 }
 #cardContent{
   margin: 15px 0px 0px 0px;
@@ -83,13 +98,18 @@ p
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
 }
 
 #buttonGridBottom{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
+}
 
+#buttonGrid{
+  background-color: var(--enabledSectionColor);
 }
 
 #notesForm{
@@ -127,6 +147,9 @@ p
 #cardioForm{
   background-color: var(--enabledSectionColor);
   border-radius: 0px 0px 17px 17px;
+}
+#cardioInput{
+  background-color: white;
 }
 #complete{
   padding-top: 10px;
