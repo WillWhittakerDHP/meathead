@@ -51,6 +51,7 @@ p
 #border{
   border: solid;
   border-radius: 20px;
+  background-color: var(--enabledSectionColor);
 }
 #cardContent{
   margin: 15px 0px 0px 0px;
@@ -83,13 +84,18 @@ p
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
 }
 
 #buttonGridBottom{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
+  background-color: var(--enabledSectionColor);
+}
 
+#buttonGrid{
+  background-color: var(--enabledSectionColor);
 }
 
 #notesForm{
