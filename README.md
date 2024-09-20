@@ -1,6 +1,6 @@
 # Welcome to the Meathead Project 💪
 ## Description 😒 ➡️ 💪😁
-Tired of messing with numbers? Ready to accept your really just a meathead? Skip the thinking and come on down to your all in one site to lift heavy and get those gains.
+Tired of messing with numbers? Ready to accept you're really just a meathead? Skip the thinking and come on down to your all in one site to lift heavy and get those gains.
 
 **Automatic Exercise Suggestions:** Get a good start at the gym and don't waste any time with bad routines.
 
