@@ -229,9 +229,9 @@ function cardColumnCreator(){
       hoverButton.setAttribute("title", "platemath")
 
       // /*
-console.log((oneRepMax[1].accessoryOneRepMax - 45));
-console.log(((oneRepMax[1].accessoryOneRepMax - 45) / 45));
-console.log(Math.round(((oneRepMax[1].accessoryOneRepMax - 45) / 45) / 2));
+console.log((oneRepMax[0].focusOneRepMax - 45));
+console.log(((oneRepMax[0].focusOneRepMax - 45) / 45));
+console.log(Math.round(((oneRepMax[0].focusOneRepMax - 45) / 45) / 2));
       // */
 
       let buttonAtIndex = document.createElement('button');
