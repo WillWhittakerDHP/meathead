@@ -278,7 +278,8 @@ console.log(Math.round(((oneRepMax[1].accessoryOneRepMax - 45) / 45) / 2));
 
     let cardio_button = document.createElement('input', 'time');
     // cardio_button.classList.add('btn','btn-outline-primary');
-    cardio_button.setAttribute("id", "cardio"); 
+    cardio_button.setAttribute("id", "cardioInput"); 
+    cardio_form.setAttribute("id", "cardioForm"); 
     
     let complete_row = document.createElement('div');
     complete_row.classList.add('row','justify-content-md-center');
