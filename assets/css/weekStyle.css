@@ -20,7 +20,8 @@
 .card, 
 .container{
   border-style: none;
-  background-color: rgba(238, 238, 247, 1);
+  background-color: none;
+  justify-content: center;
 }
 
 button{
@@ -51,6 +52,7 @@ p
 #border{
   border: solid;
   border-radius: 20px;
+  background-color: #fff;
 }
 #cardContent{
   margin: 15px 0px 0px 0px;
