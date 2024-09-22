@@ -101,7 +101,6 @@ let splitDesign =[
       timer.textContent = secondsLeft;
       
       const runTimer = function () {
-        let num = 0;
         const secondsPerSet = splitDesign[0].timerLengthPerDay;        
         let timerInterval = setInterval(function () {
           secondsLeft--;        
@@ -139,6 +138,7 @@ let splitDesign =[
       let focusButtonAtIndexMaker = function() {
         let buttonClick = function() {   
           if(secondsLeft === splitDesign[0].timerLengthPerDay){
+            secondsLeft--;
             buttonAtIndex.setAttribute("disabled","true");
             runTimer();
           }else{
