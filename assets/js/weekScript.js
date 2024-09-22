@@ -39,7 +39,7 @@ let splitDesign =[
     beginning.classList.add('justify-content-center');
     let numberOfColumns = splitDesign[1].splitDaysTotal;
     let secondsLeft = splitDesign[0].timerLengthPerDay;  
-     
+    
     for (let i = 0; i < numberOfColumns; i++) {
       let colAtIndex = document.createElement('div'); 
       
@@ -119,13 +119,13 @@ let splitDesign =[
       timerColumnOrienter.appendChild(timerLabel);
       timerRowOrienter.appendChild(timerActualContainer);
       timerActualContainer.appendChild(timer);
-
-
+      
+      
       let containerForTheFocusExerciseButtons = document.createElement('div');
       containerForTheFocusExerciseButtons.classList.add('container','text-center');
       containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
       containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
-
+      
       let nameOfTheFocusExercise = document.createElement('h5');
       nameOfTheFocusExercise.textContent = focusExercise;
       containerForTheFocusExerciseButtons.appendChild(nameOfTheFocusExercise);
@@ -137,12 +137,8 @@ let splitDesign =[
           runTimer;
           buttonAtIndex.setAttribute("disabled","true");
         };
-          
+
         let buttonAtIndex = document.createElement('button');
-        buttonAtIndex.setAttribute("name", "button" + i);
-        buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${oneRepMax[1].focusOneRepMax} lbs`;
-        buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
-        buttonAtIndex.addEventListener("click", buttonClick);
         
         let hoverButtonMaker = function() {
           let plateCounter =[];
@@ -172,24 +168,40 @@ let splitDesign =[
               } else {                
               };              
             };
+            // let hoverButtonPlaces = platesNeeded.length
+            // let buttonPlatePlaces = [];
+            // let buttonPlateDenominations = [];
+            // console.log(hoverButtonPlaces)
+            // for (l = 0, l < hoverButtonPlaces, l++)
+            // { };
+            // return buttonAtIndex, hoverButtonAdvice;
+            let hoverButtonAdvice = (`For this weight you need to add:
+              ${platesNeeded[0]} ${plateDenomination[0]}s
+              ${platesNeeded[1]} ${plateDenomination[1]}s
+              ${platesNeeded[2]} ${plateDenomination[2]}s
+              ${platesNeeded[3]} ${plateDenomination[3]}s
+              ${platesNeeded[4]} ${plateDenomination[4]}s`);
+              let hoverButton = document.createElement('div');
+              hoverButton.setAttribute("class", "image");
+              hoverButton.setAttribute("title", hoverButtonAdvice);
+              hoverButton.appendChild(buttonAtIndex);
+              containerForTheFocusExerciseButtons.appendChild(hoverButton);
+              // buttonAtIndex.setAttribute("name", "button" + i);
+              // buttonAtIndex.setAttribute("type", "button") 
+              // buttonAtIndex.setAttribute("data-bs-toggle", "tooltip");
+              // buttonAtIndex.setAttribute("data-bs-placement", "top");
+              // buttonAtIndex.setAttribute("data-bs-custom-class", "custom-tooltip");
+              // buttonAtIndex.setAttribute("data-bs-title", hoverButtonAdvice);
           };
           plateCalculator();
-          let hoverButtonAdvice = (`For this weight you need to add:
-            ${platesNeeded[0]} ${plateDenomination[0]}s
-            ${platesNeeded[1]} ${plateDenomination[1]}s
-            ${platesNeeded[2]} ${plateDenomination[2]}s
-            ${platesNeeded[3]} ${plateDenomination[3]}s
-            ${platesNeeded[4]} ${plateDenomination[4]}s`);
-            let hoverButton = document.createElement('div');
-            hoverButton.setAttribute("class", "image");
-            hoverButton.setAttribute("title", hoverButtonAdvice);
-            containerForTheFocusExerciseButtons.appendChild(hoverButton);
-            hoverButton.appendChild(buttonAtIndex);
-            return buttonAtIndex;
-          };
-          hoverButtonMaker();        
-          outerContainer.appendChild(containerForTheFocusExerciseButtons);
-          // containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+        };
+        hoverButtonMaker();        
+        
+        buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${oneRepMax[1].focusOneRepMax} lbs`;
+        buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+        buttonAtIndex.addEventListener("click", buttonClick);
+        containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+        outerContainer.appendChild(containerForTheFocusExerciseButtons);
         };
       for (let i=0; i < numberOfFocusExerciseButtons; i++)
         {
