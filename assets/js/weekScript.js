@@ -33,6 +33,8 @@ let splitDesign =[
     headerWeekNumber.textContent = `${upperCaseMuscleGroup} Week One`;
   };
   
+  let stopTimer = false;
+  let continueTimer = false;
   function cardColumnCreator(){
     
     let beginning = document.getElementById("appendHere");
@@ -99,15 +101,17 @@ let splitDesign =[
       timer.textContent = secondsLeft;
       
       const runTimer = function () {
+        let num = 0;
         const secondsPerSet = splitDesign[0].timerLengthPerDay;        
         let timerInterval = setInterval(function () {
-          secondsLeft--;
+          secondsLeft--;        
           timer.textContent = secondsLeft;
-          if (secondsLeft === -1) {
+          if (secondsLeft === -1 || stopTimer) {
             clearInterval(timerInterval);
             secondsLeft = secondsPerSet;
             timer.textContent = secondsLeft;
             setInterval(secondsPerSet);
+            stopTimer = false;
           }
         }, 
         1000);
@@ -133,9 +137,14 @@ let splitDesign =[
       let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
       
       let focusButtonAtIndexMaker = function() {
-        let buttonClick = function() {          
-          runTimer();
-          buttonAtIndex.setAttribute("disabled","true");
+        let buttonClick = function() {   
+          if(secondsLeft === splitDesign[0].timerLengthPerDay){
+            buttonAtIndex.setAttribute("disabled","true");
+            runTimer();
+          }else{
+            alertTimer();
+          }         
+          
         };
           
         let buttonAtIndex = document.createElement('button');
@@ -320,3 +329,76 @@ let splitDesign =[
     };
     
     init();
+
+    function alertTimer(){
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+    
+      let modalDialog = document.createElement('div');
+      modalDialog.classList.add('modal-dialog');
+    
+      let modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+    
+      let modalHeader = document.createElement('div');
+      modalHeader.classList.add('modal-header');
+    
+      let modalTitle = document.createElement('h5');
+      modalTitle.classList.add('modal-title');
+      modalTitle.textContent = "Timer is Running.";
+    
+      let X = document.createElement('button');
+      X.classList.add('btn-close');
+      X.setAttribute("type", "button");
+      X.setAttribute("data-bs-dismiss", "modal");
+      X.setAttribute("aria-label", "Close"); 
+    
+      let modalBody = document.createElement('div');
+      modalBody.classList.add('modal-body');
+    
+      let modalTextContent = document.createElement('p');
+      modalTextContent.style.fontSize = "15px"
+      modalTextContent.textContent = "Are you sure you want to move on to the next exercise?";
+
+      let modalFooter = document.createElement('div');
+      modalFooter.classList.add('modal-footer');
+
+      let modalNo = document.createElement('button');
+      modalNo.classList.add('btn','btn-primary');
+      modalNo.setAttribute("data-bs-dismiss", "modal");
+      modalNo.textContent = "Close";
+
+      let modalMoveOn = document.createElement('button');
+      modalMoveOn.classList.add('btn','btn-danger');
+      modalMoveOn.setAttribute("data-bs-dismiss", "modal");
+      modalMoveOn.textContent = "Move On";
+
+      //let modalFooter = document.createElement('div');
+      //modalFooter.classList.add('modal-footer');
+    
+      modal.appendChild(modalDialog);
+      modalDialog.appendChild(modalContent);  
+    
+      modalContent.appendChild(modalHeader);
+      modalHeader.appendChild(modalTitle);
+      modalHeader.appendChild(X);
+    
+      modalContent.appendChild(modalBody);
+      modalBody.appendChild(modalTextContent);
+      //modal.appendChild(modalFooter);
+    
+      modalContent.appendChild(modalFooter);
+      modalFooter.appendChild(modalNo);
+      modalFooter.appendChild(modalMoveOn);
+
+      modalMoveOn.addEventListener("click", function (e){
+        stopTimer = true;
+      });
+
+      var myModal = new bootstrap.Modal(modal, {
+        keyboard: false
+      })
+      myModal.show()
+
+      
+    }
