@@ -133,12 +133,8 @@ let splitDesign =[
       let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
       
       let focusButtonAtIndexMaker = function() {
-        let buttonClick = function() {
-          runTimer;
-          buttonAtIndex.setAttribute("disabled","true");
-        };
 
-        let buttonAtIndex = document.createElement('button');
+
         
         let hoverButtonMaker = function() {
           let plateCounter =[];
@@ -192,21 +188,26 @@ let splitDesign =[
               // buttonAtIndex.setAttribute("data-bs-placement", "top");
               // buttonAtIndex.setAttribute("data-bs-custom-class", "custom-tooltip");
               // buttonAtIndex.setAttribute("data-bs-title", hoverButtonAdvice);
+            };
+            plateCalculator();
           };
-          plateCalculator();
+          // hoverButtonMaker();        
+          
         };
-        hoverButtonMaker();        
-        
-        buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${oneRepMax[1].focusOneRepMax} lbs`;
-        buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
-        buttonAtIndex.addEventListener("click", buttonClick);
-        containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
-        outerContainer.appendChild(containerForTheFocusExerciseButtons);
+        for (let n=0; n < numberOfFocusExerciseButtons; n++)
+          {
+            let buttonClick = function() {
+              runTimer;
+              buttonAtIndex.setAttribute("disabled","true");
+            };
+          let buttonAtIndex = document.createElement('button');
+          buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${oneRepMax[1].focusOneRepMax} lbs`;
+          buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+          buttonAtIndex.addEventListener("click", buttonClick);
+          containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+          outerContainer.appendChild(containerForTheFocusExerciseButtons);
         };
-      for (let i=0; i < numberOfFocusExerciseButtons; i++)
-        {
-          focusButtonAtIndexMaker();
-        };
+        focusButtonAtIndexMaker();
           // End Focus Exercise Button Container
         
         cardBody.appendChild(outerContainer);
@@ -259,19 +260,19 @@ let splitDesign =[
           buttonAtIndex.setAttribute("disabled","true");
         };
         
-        let buttonAtIndex = document.createElement('button');
-        buttonAtIndex.setAttribute("name", "button" + i);
-        buttonAtIndex.textContent = `Set ` + (i+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
-        buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
-        buttonAtIndex.addEventListener("click", buttonClick);
-        containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
-        outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
+        
+        for (let m=0; m < numberOfAccessoryExerciseButtons; m++)
+          {
+          let buttonAtIndex = document.createElement('button');
+          buttonAtIndex.setAttribute("name", "button" + m);
+          buttonAtIndex.textContent = `Set ` + (m+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
+          buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+          buttonAtIndex.addEventListener("click", buttonClick);
+          containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
+          outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
+          };
         };
-
-        for (let i=0; i < numberOfAccessoryExerciseButtons; i++)
-        {
-          accessoryButtonAtIndexMaker();
-        };
+        accessoryButtonAtIndexMaker();
 
         // outerContainer.appendChild(containerForTheAccessoryExerciseButtons)
         
