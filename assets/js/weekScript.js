@@ -38,11 +38,11 @@ let splitDesign =[
     let beginning = document.getElementById("appendHere");
     beginning.classList.add('justify-content-center');
     let numberOfColumns = splitDesign[1].splitDaysTotal;
-    let secondsLeft = splitDesign[0].timerLengthPerDay;
-    
+    let secondsLeft = splitDesign[0].timerLengthPerDay;  
+     
     for (let i = 0; i < numberOfColumns; i++) {
-      
       let colAtIndex = document.createElement('div'); 
+      
       if(numberOfColumns === 3){
         colAtIndex.classList.add('col-6');  
       }
@@ -191,7 +191,7 @@ let splitDesign =[
           outerContainer.appendChild(containerForTheFocusExerciseButtons);
           // containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
         };
-      for (i=0; i < numberOfFocusExerciseButtons; i++)
+      for (let i=0; i < numberOfFocusExerciseButtons; i++)
         {
           focusButtonAtIndexMaker();
         };
@@ -256,7 +256,7 @@ let splitDesign =[
         outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
         };
 
-        for (i=0; i < numberOfAccessoryExerciseButtons; i++)
+        for (let i=0; i < numberOfAccessoryExerciseButtons; i++)
         {
           accessoryButtonAtIndexMaker();
         };
