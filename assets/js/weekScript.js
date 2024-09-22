@@ -174,17 +174,23 @@ let splitDesign =[
             };
           };
           plateCalculator();
-          let hoverButtonAdvice = (`For this weight you need to add:
-            ${platesNeeded[0]} ${plateDenomination[0]}s
-            ${platesNeeded[1]} ${plateDenomination[1]}s
-            ${platesNeeded[2]} ${plateDenomination[2]}s
-            ${platesNeeded[3]} ${plateDenomination[3]}s
-            ${platesNeeded[4]} ${plateDenomination[4]}s`);
-            let hoverButton = document.createElement('div');
-            hoverButton.setAttribute("class", "image");
-            hoverButton.setAttribute("title", hoverButtonAdvice);
-            containerForTheFocusExerciseButtons.appendChild(hoverButton);
-            hoverButton.appendChild(buttonAtIndex);
+          let hoverButtonAdvice = (`For this weight you need to add: ${platesNeeded[0]} ${plateDenomination[0]}s ${platesNeeded[1]} ${plateDenomination[1]}s ${platesNeeded[2]} ${plateDenomination[2]}s ${platesNeeded[3]} ${plateDenomination[3]}s ${platesNeeded[4]} ${plateDenomination[4]}s`);
+            let hoverButton = document.createElement('span');
+            //hoverButton.setAttribute("class", "image");
+            hoverButton.classList.add("tooltiptext");            
+            const re = /( ?undefineds? ?)+/i;
+            const regn = /\n+/i;
+            hoverButtonAdvice = hoverButtonAdvice.replace(regn , '')
+            hoverButtonAdvice = hoverButtonAdvice.trim();            
+            hoverButtonAdvice = hoverButtonAdvice.replace(re, '')
+            hoverButton.textContent = hoverButtonAdvice;
+            //hoverButton.setAttribute("title", hoverButtonAdvice);
+            //hoverButton.setAttribute("alt","");
+            //buttonAtIndex.appendChild(hoverButton);
+            //buttonAtIndex.classList.add("tooltip");
+            buttonAtIndex.classList.add("position-relative");
+            containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+            buttonAtIndex.appendChild(hoverButton);
             return buttonAtIndex;
           };
           hoverButtonMaker();        
