@@ -64,7 +64,6 @@ let splitDesign =[
       outerContainer.classList.add('container','text-center'); 
       outerContainer.setAttribute("id", "border");
       
-      //Card Label Section
       let labelForCardAtIndex = document.createElement('div');
       labelForCardAtIndex.classList.add('row'); 
       
@@ -73,15 +72,12 @@ let splitDesign =[
       cardAtIndex.setAttribute("id", "vertRightBorder");
       
       let dayNameForCardAtIndex = document.createElement('h4');
-      // dayNameForCardAtIndex.setAttribute("id", "dayTimer");
       dayNameForCardAtIndex.textContent = "Day " + (i+1);
       
-      //Start Appending and Nesting Buttons
       cardAtIndex.appendChild(dayNameForCardAtIndex);
       labelForCardAtIndex.appendChild(cardAtIndex);
       outerContainer.appendChild(labelForCardAtIndex);
       
-      // Timer Sub-section
       
       let timerSubSectionInsideLabel = document.createElement('div');
       timerSubSectionInsideLabel.classList.add('col'); 
@@ -94,14 +90,12 @@ let splitDesign =[
       timerColumnOrienter.classList.add('col'); 
       
       let timerLabel = document.createElement('h4');
-      // timerLabel.setAttribute("id", "dayTimer");
       timerLabel.textContent = "Timer:";
       
       let timerActualContainer = document.createElement('div');
       timerActualContainer.classList.add('col');
       
       let timer = document.createElement('h4');
-      // timer.setAttribute("id", "timer");
       timer.textContent = secondsLeft;
       
       const runTimer = function () {
@@ -119,27 +113,23 @@ let splitDesign =[
         1000);
       };
       
-      //top row append
       labelForCardAtIndex.appendChild(timerSubSectionInsideLabel);
       timerSubSectionInsideLabel.appendChild(timerRowOrienter);
       timerRowOrienter.appendChild(timerColumnOrienter);
       timerColumnOrienter.appendChild(timerLabel);
       timerRowOrienter.appendChild(timerActualContainer);
       timerActualContainer.appendChild(timer);
-      // timerActualContainer.appendChild(timer_p);
-      
-      // Focus Exercise Button Container
+
+
       let containerForTheFocusExerciseButtons = document.createElement('div');
       containerForTheFocusExerciseButtons.classList.add('container','text-center');
       containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
       containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
-      // containerForTheFocusExerciseButtons.setAttribute("disabled","true");
-      
+
       let nameOfTheFocusExercise = document.createElement('h5');
       nameOfTheFocusExercise.textContent = focusExercise;
       containerForTheFocusExerciseButtons.appendChild(nameOfTheFocusExercise);
       
-      // Buttons for Focus Exercise
       let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
       
       let focusButtonAtIndexMaker = function() {
@@ -160,48 +150,46 @@ let splitDesign =[
           let remainingWeight = [oneRepMax[0].focusOneRepMax - 45];
           let plateDenomination = [];
           let platesNeeded = [];
-          for (let i = 0; i < numberOfFocusExerciseButtons; i++) {
-            // while (remainingWeight.length < plateOrder.length) {
-            //     let nearestPlatesWithoutGoingOver = remainingWeight[i] / plateOrder[i];
-            //     if (Math.floor(nearestPlatesWithoutGoingOver) % 2 === 0) {
-            //       nearestPlatesRoundedDown = Math.floor(nearestPlatesWithoutGoingOver);
-            //     } else {
-            //       nearestPlatesRoundedDown = (Math.floor(nearestPlatesWithoutGoingOver) - 1);
-            //     };
-            //     let newRemainingWeight = remainingWeight[i] - (nearestPlatesRoundedDown * plateOrder[i]);
-        //         if (newRemainingWeight > 0) {
-        //           newRemainingWeight = remainingWeight[i] - (nearestPlatesRoundedDown * plateOrder[i]);
-        //           remainingWeight.push(newRemainingWeight);
-        //           plateCounter.push(nearestPlatesRoundedDown);
-                  // if (nearestPlatesRoundedDown = 0) {
-                  //   newRemainingWeight = remainingWeight[i];
-                  //   remainingWeight.push(0);
-                  //   plateCounter.push(0)
-                  // } else {
-                    // plateDenomination.push(plateOrder[i]);
-                    // platesNeeded.push(nearestPlatesRoundedDown);
-                  // };
-                  // };
-                  i++;
-                };
-        //       };
-        //       let hoverButton = document.createElement('div');
-        //       let hoverButtonAdvice = (`For this weight you need to add:
-        //         ${platesNeeded[0]} ${plateDenomination[0]}s
-        //         ${platesNeeded[1]} ${plateDenomination[1]}s
-        //         ${platesNeeded[2]} ${plateDenomination[2]}s
-        //         ${platesNeeded[3]} ${plateDenomination[3]}s
-        //         ${platesNeeded[4]} ${plateDenomination[4]}s`);
-        //         console.log("ding");
-        //         hoverButton.setAttribute("class", "image");
-        //         hoverButton.setAttribute("title", hoverButtonAdvice);
-        //         hoverButton.appendChild(buttonAtIndex);
-        //         containerForTheFocusExerciseButtons.appendChild(hoverButton);
-        //         return buttonAtIndex;
+          let plateCalculator = function() {
+            for (let j = 0; j < plateOrder.length; j++) {
+              let nearestPlatesWithoutGoingOver = remainingWeight[j] / plateOrder[j];
+              if (Math.floor(nearestPlatesWithoutGoingOver) % 2 === 0) {
+                nearestPlatesRoundedDown = parseInt(Math.floor(nearestPlatesWithoutGoingOver));
+              } else {
+                nearestPlatesRoundedDown = parseInt((Math.floor(nearestPlatesWithoutGoingOver) - 1));
               };
-              hoverButtonMaker();        
-              outerContainer.appendChild(containerForTheFocusExerciseButtons);
-              containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+              let newRemainingWeight = remainingWeight[j] - (nearestPlatesRoundedDown * plateOrder[j]);
+              newRemainingWeight = remainingWeight[j] - (nearestPlatesRoundedDown * plateOrder[j]);
+              remainingWeight.push(newRemainingWeight);
+              plateCounter.push(nearestPlatesRoundedDown);
+              if (nearestPlatesRoundedDown > 0) {                
+                plateDenomination.push(plateOrder[j]);
+                platesNeeded.push(parseInt(nearestPlatesRoundedDown));
+              } else if (nearestPlatesRoundedDown = 0) {                
+                newRemainingWeight = remainingWeight[j];
+                remainingWeight.push(0);
+                plateCounter.push(0);
+              } else {                
+              };              
+            };
+          };
+          plateCalculator();
+          let hoverButtonAdvice = (`For this weight you need to add:
+            ${platesNeeded[0]} ${plateDenomination[0]}s
+            ${platesNeeded[1]} ${plateDenomination[1]}s
+            ${platesNeeded[2]} ${plateDenomination[2]}s
+            ${platesNeeded[3]} ${plateDenomination[3]}s
+            ${platesNeeded[4]} ${plateDenomination[4]}s`);
+            let hoverButton = document.createElement('div');
+            hoverButton.setAttribute("class", "image");
+            hoverButton.setAttribute("title", hoverButtonAdvice);
+            containerForTheFocusExerciseButtons.appendChild(hoverButton);
+            hoverButton.appendChild(buttonAtIndex);
+            return buttonAtIndex;
+          };
+          hoverButtonMaker();        
+          outerContainer.appendChild(containerForTheFocusExerciseButtons);
+          // containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
         };
       for (i=0; i < numberOfFocusExerciseButtons; i++)
         {
