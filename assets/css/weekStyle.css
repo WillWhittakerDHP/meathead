@@ -28,7 +28,7 @@
 button{
   justify-content: right;
   background-color: var(--enabledButtonColor);
-  color: var(--textOnLightBackground);
+  color: rgba(68, 88, 119, 1);
 }
 
 button:disabled{
