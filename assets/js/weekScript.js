@@ -99,7 +99,7 @@ let splitDesign =[
       timer.textContent = secondsLeft;
       
       const runTimer = function () {
-        const secondsPerSet = splitDesign[0].timerLengthPerDay;
+        const secondsPerSet = splitDesign[0].timerLengthPerDay;        
         let timerInterval = setInterval(function () {
           secondsLeft--;
           timer.textContent = secondsLeft;
@@ -133,8 +133,8 @@ let splitDesign =[
       let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
       
       let focusButtonAtIndexMaker = function() {
-        let buttonClick = function() {
-          runTimer;
+        let buttonClick = function() {          
+          runTimer();
           buttonAtIndex.setAttribute("disabled","true");
         };
           
