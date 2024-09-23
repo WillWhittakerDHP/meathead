@@ -4,36 +4,36 @@
   --notesSize: 35px;
   --dayTimerSize: 25px;
   /*for enabled/disabled buttons, sections, and cards*/
-  --enabledButtonColor: rgb(35, 123, 254);
-  --disabledButtonColor: rgb(111, 149, 205);
-  --enabledSectionColor: rgb(111, 149, 205);
-  --disabledSectionColor: rgb(188, 212, 248);
-  --textOnLightBackground:  rgba(68, 88, 119, 1);
-  --textOnDarkBackground: rgb(120, 158, 215);
+  --enabledButtonColor: rgb(113, 104, 90);
+  --disabledButtonColor: rgb(151, 122, 83);
+  --enabledSectionColor: blanchedalmond;
+  --disabledSectionColor: rgb(240, 229, 215);
+  --textOnLightBackground: rgb(201, 159, 103);  
+  --textOnDarkBackground: rgb(118, 96,);
 }
 
 .dropdown-menu{
   /* I don't know how to edit variables for bootstrap!*/
-  --dropdown-link-active-color: rgba(68, 88, 119, 1);
-  --dropdown-link-active-bg: rgba(68, 88, 119, 1);
+  --dropdown-link-active-color: red;
+  --dropdown-link-active-bg: red;
 }
 
 
 .card, 
 .container{
   border-style: none;
-  background-color: rgba(238, 238, 247, 1);
+  background-color: beige;
 }
 
 button{
   justify-content: right;
   background-color: var(--enabledButtonColor);
-  color: rgba(68, 88, 119, 1);
+  color: rgb(164, 152, 137);
 }
 
 button:disabled{
   background-color: var(--disabledButtonColor);
-  color: rgba(68, 88, 119, 1);
+  color:rgb(138, 33, 12);
 }
 
 p
@@ -44,8 +44,8 @@ p
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #00b3db;
-  border-color: #285e8e; /*set the color you want here*/
+  background-color: rgb(113, 104, 90);
+  border-color:rgba(181, 158, 83, 0.727); /*set the color you want here*/
 }
 
 .image {
