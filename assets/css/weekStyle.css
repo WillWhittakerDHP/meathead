@@ -9,7 +9,7 @@
   --enabledSectionColor: blanchedalmond;
   --disabledSectionColor: rgb(240, 229, 215);
   --textOnLightBackground: rgb(201, 159, 103);  
-  --textOnDarkBackground: rgb(118, 96,);
+  --textOnDarkBackground: rgb(113, 104, 90);
 }
 
 .dropdown-menu{
@@ -44,7 +44,7 @@ p
 
 .btn-primary:hover {
   color: #fff;
-  background-color: rgb(113, 104, 90);
+  background-color: var(--secondary);
   border-color:rgba(181, 158, 83, 0.727); /*set the color you want here*/
 }
 

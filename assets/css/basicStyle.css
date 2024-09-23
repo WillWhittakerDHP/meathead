@@ -51,6 +51,10 @@ header h1 {
   line-height: 1;
   box-shadow: 2px 2px var(--secondary);
 }
+ header h2 {
+  color: black;
+  box-shadow:  2px 2px 2px 2px  black;
+ }
 
 nav {
   display: flex;
@@ -79,6 +83,7 @@ nav a:hover {
 
 nav a:last-child {
   margin-right: 0;
+
 }
 
 @media screen and (max-width)  {
