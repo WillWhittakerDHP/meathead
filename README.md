@@ -16,8 +16,8 @@ Tired of messing with numbers? Ready to accept you're really just a meathead? Sk
 - Bootstrap
 ## Screenshots 📷😎
 ### Landing Page
-![meatheadpicture](https://github.com/user-attachments/assets/b7de33cd-1e55-4f1b-a551-7c2b4a2ce4e8)
+![meatheadpicture](https://github.com/user-attachments/assets/bb249de1-c659-46a1-8725-f5b95c1476d7)
 ### Week Page
-![meatheadpicture2](https://github.com/user-attachments/assets/c160fa0f-f840-4ec5-a197-19623138e8ad)
+![meatheadpicture2](https://github.com/user-attachments/assets/d0283638-7bb0-4a71-872e-1da3ba4d91d9)
 ## Link 
 https://willwhittakerdhp.github.io/meathead/
