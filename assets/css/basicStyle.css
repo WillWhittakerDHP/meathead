@@ -4,9 +4,9 @@
 
 /* brand color palette */
 :root {
-  --primary: rgba(68, 88, 119, 1);
+  --primary: rgb(118, 96, 68);
   --secondary: hsl(0, 86%, 34%);
-  --tertiary: rgba(49, 52, 61, 1);
+  --tertiary: rgb(240, 229, 215);
   --dark: rgba(28, 29, 33, 1);
   --light: rgba(238, 238, 247, 1);
 }
@@ -40,8 +40,6 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  background-color: none;
-  box-shadow: none;
 }
 
 header h1 {
@@ -51,6 +49,7 @@ header h1 {
   margin: 0;
   font-size: 4vw;
   line-height: 1;
+  box-shadow: 2px 2px var(--secondary);
 }
 
 nav {
@@ -70,6 +69,7 @@ nav a {
   background-position: bottom;
   transition: all 0.25s ease-in;
   font-size: 1.4rem;
+  box-shadow: black;
 }
 
 nav a:hover {
@@ -81,7 +81,7 @@ nav a:last-child {
   margin-right: 0;
 }
 
-@media screen and (max-windth) {
+@media screen and (max-width)  {
 header{
   background-color: beige;
 }  
