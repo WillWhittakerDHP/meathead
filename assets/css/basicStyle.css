@@ -9,13 +9,23 @@
   --tertiary: rgb(240, 229, 215);
   --dark: rgba(28, 29, 33, 1);
   --light: rgba(238, 238, 247, 1);
+  --enabledButtonColor: rgb(113, 104, 90);
+  --enabledTextColor: rgb(28, 20, 8);
+  --buttonHoverColor: rgb(103, 78, 78);
+  --disabledButtonColor: rgb(151, 122, 83);
+  --disabledTextColor: rgb(68, 67, 66);
+  --enabledSectionColor: blanchedalmond;
+  --disabledSectionColor: rgb(240, 229, 215);
+  --textOnLightBackground: rgb(201, 159, 103);  
+  --textOnDarkBackground: rgb(118, 96);
+  --navBarColor: rgb(106, 63, 63);
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: var(--primary);
+  /* color: var(--primary); */
   background-color: var(--light);
   line-height: 1.5;
 }
@@ -47,7 +57,7 @@ header h1 {
   background-color: var(--dark);
   padding: 5px 1% 5px 6%;
   margin: 0;
-  font-size: 4vw;
+  font-size: 7vw;
   line-height: 1;
   box-shadow: 2px 2px var(--secondary);
 }
