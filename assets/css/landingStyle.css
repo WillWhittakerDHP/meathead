@@ -11,6 +11,7 @@ main {
   margin-top: 20px;
   margin-bottom: 45px;
   background-color: none;
+  align-items: center;
 
 }
 
@@ -35,10 +36,11 @@ main {
   background-color:none;
   color: rgb(9, 9, 9);
   margin: 0;
-  padding: 5px 10px;
+  padding: 10px 10px;
   font-size: 2.3rem;
   line-height: 1.2;
   display: inline;
+  box-shadow: 4px 4px 4px 4px black;
 }
 
 .page-wrapper {
@@ -53,11 +55,19 @@ main {
   clear: both;
   float: left;
   width: 40%;
-  height: 100%;
-  background-color: beige;
+  height: 110%;
+  background-color: blanchedalmond;
   color: black;
+  box-shadow: 2px 2px 2px 2px var(--secondary);
 }
 
+.card{
+  background-color: blanchedalmond;
+  height: 30%;
+  width: 110%;
+  margin: 0;
+  box-shadow: 2px 2px 2px 2px var(--secondary);
+}
 .page-section {
   margin: 25px 0;
   padding: 20px 0;
@@ -84,14 +94,14 @@ main {
 
 .page-section p {
   margin-bottom: 0%;
-  background-color: beige;
+  background-color: none;
 } */
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
+  background-color: beige;
 }
 
 .flex-item {
