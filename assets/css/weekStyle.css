@@ -119,6 +119,10 @@ p
   background-color: var(--enabledSectionColor);
 }
 
+#buttonGrid:disabled{
+  background-color: black;
+}
+
 #notesForm{
   padding-bottom: 20px;
   padding-top: 20px;
@@ -128,7 +132,7 @@ p
   background-color: var(--enabledSectionColor);
 }
 
-#accessoryGridTop:enabled{
+#accessoryGridTop{
   margin-left: -12px;
   margin-right: -12px;
   padding-bottom: 20px;
