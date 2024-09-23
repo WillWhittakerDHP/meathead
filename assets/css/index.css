@@ -36,9 +36,9 @@ main {
   justify-content: flex;
   align-items: flex;
   text-align: left;
-}
+/* }
 
-.hero-banner div {
+.hero-banner div { */
   flex: 0 0 90%;
 }
 
@@ -51,7 +51,7 @@ main {
   line-height: 1.2;
   display: inline;
   box-shadow: 4px 4px 4px 4px black;
-}
+} 
 
 .page-wrapper {
   max-width: 88%;
@@ -105,7 +105,7 @@ main {
 .page-section p {
   margin-bottom: 0%;
   background-color: none;
-} */
+} 
 
 .flex-container {
   display: flex;

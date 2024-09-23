@@ -26,9 +26,10 @@
 
 .dropdown-menu{
   /* I don't know how to edit variables for bootstrap!*/
-  --dropdown-link-active-color: red;
-  --dropdown-link-active-bg: red;
+  --dropdown-link-active-color: var(--textOnDarkBackground);
+  --dropdown-link-active-bg: var(--textOnLightBackground);
 }
+
 #navDropDown{
   background-color: var(--navBarColor);
   border-radius: 5px;
@@ -38,6 +39,22 @@
 .container{
   border-style: none;
   background-color: var(--enabledSectionColor);
+}
+
+.containerTextLeft{
+  padding: 20px 9px 30px;
+  align-items: center
+}
+
+.container-fluid {
+  color: var(--dark);
+  /* background-color: #fff; */
+  text-shadow: 5px 5px 5px rgb(118, 96, 68);
+  text-align: center;
+  text-shadow: 2px 2px 2px var(--secondary);
+  padding: 20px 9px 30px; 
+  margin: 0px 0px 0px; 
+  border: 0px;
 }
 
 .setButton{

@@ -144,7 +144,7 @@ let splitDesign =[
           let buttonClick = function() {   
             if(secondsLeft === splitDesign[0].timerLengthPerDay){
               clickNumber.push("click");
-              secondsLeft--;
+              // secondsLeft--;
               buttonAtIndex.setAttribute("disabled","true");
               runTimer();
               if (clickNumber.length >= numberOfFocusExerciseButtons) {

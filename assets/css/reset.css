@@ -19,12 +19,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%;
 }
-.container-fluid {
+/* .container-fluid {
   color: var(--dark);
   text-shadow: 5px 5px 5px rgb(118, 96, 68);
   text-align: center;
   text-shadow: 2px 2px 2px var(--secondary);
-}
+} */
 
 input, select, option, optgroup, textarea, button,
 pre, code {
