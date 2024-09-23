@@ -157,7 +157,8 @@ let splitDesign =[
           let buttonAtIndex = document.createElement('button');
           buttonAtIndex.setAttribute("name", "button" + p);
           buttonAtIndex.textContent = `Set ` + (p+1) + `: ${splitDesign[3].repAdvice} reps at ${parseFloat(oneRepMax[0].focusOneRepMax * percentagesForWeightAdvice[i]).toFixed(0)} lbs`;
-          buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+          buttonAtIndex.setAttribute("class", "setButton");
+          buttonAtIndex.classList.add('btn','btn-sm','col-4');
           buttonAtIndex.classList.add("position-relative");
           buttonAtIndex.addEventListener("click", buttonClick);
           // hoverButtonMaker();        
@@ -266,7 +267,8 @@ let splitDesign =[
           let buttonAtIndex = document.createElement('button');
           buttonAtIndex.setAttribute("name", "button" + m);
           buttonAtIndex.textContent = `Set ` + (m+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
-          buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+          buttonAtIndex.setAttribute("class", "setButton")
+          buttonAtIndex.classList.add('btn','btn-sm','col-4');
           buttonAtIndex.addEventListener("click", buttonClick);
           containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
           outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
@@ -305,7 +307,8 @@ let splitDesign =[
         complete_col.classList.add('col-70');
         
         let complete_button = document.createElement('button');
-        complete_button.classList.add('btn','btn-primary','btn-lg');
+        complete_button.setAttribute("class", "setButton");
+        complete_button.classList.add('btn','btn-lg');
         complete_button.textContent = "Complete";
         
         outerContainer.appendChild(cardio_form)
@@ -355,7 +358,8 @@ let splitDesign =[
       modalFooter.classList.add('modal-footer');
       
       let modalNo = document.createElement('button');
-      modalNo.classList.add('btn','btn-primary');
+      modalNo.classList.add('btn');
+      modalNo.setAttribute("class", "setButton")
       modalNo.setAttribute("data-bs-dismiss", "modal");
       modalNo.textContent = "Close";
       

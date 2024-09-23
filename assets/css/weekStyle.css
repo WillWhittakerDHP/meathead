@@ -5,11 +5,23 @@
   --dayTimerSize: 25px;
   /*for enabled/disabled buttons, sections, and cards*/
   --enabledButtonColor: rgb(113, 104, 90);
+  --enabledTextColor: rgb(28, 20, 8);
+  --buttonHoverColor: rgb(103, 78, 78);
   --disabledButtonColor: rgb(151, 122, 83);
+  --disabledTextColor: rgb(68, 67, 66);
   --enabledSectionColor: blanchedalmond;
   --disabledSectionColor: rgb(240, 229, 215);
   --textOnLightBackground: rgb(201, 159, 103);  
-  --textOnDarkBackground: rgb(118, 96,);
+  --textOnDarkBackground: rgb(118, 96);
+  --navBarColor: rgb(106, 63, 63);
+}
+
+* body{
+  background-image: url(../images/135.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 99%;
 }
 
 .dropdown-menu{
@@ -17,35 +29,44 @@
   --dropdown-link-active-color: red;
   --dropdown-link-active-bg: red;
 }
-
+#navDropDown{
+  background-color: var(--navBarColor);
+  border-radius: 5px;
+}
 
 .card, 
 .container{
   border-style: none;
-  background-color: beige;
+  background-color: var(--enabledSectionColor);
 }
 
-button{
+.setButton{
   justify-content: right;
   background-color: var(--enabledButtonColor);
-  color: rgb(164, 152, 137);
+  color: var(--enabledTextColor);
 }
 
-button:disabled{
+.setButton:disabled{
   background-color: var(--disabledButtonColor);
-  color:rgb(138, 33, 12);
+  color:var(--disabledTextColor);
 }
 
-p
-{
+.setButton:hover {
+  color: var(--textOnLightBackground);
+  background-color: var(--buttonHoverColor);
+  border-color:var(--textOnLightBackground); /*set the color you want here*/
+}
+
+h2{
+  color: var(--disabledSectionColor);
+  background-color: var(--enabledButtonColor);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+p{
     display: inline-block;
     font-size: 35px;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: rgb(113, 104, 90);
-  border-color:rgba(181, 158, 83, 0.727); /*set the color you want here*/
 }
 
 .image {
@@ -63,10 +84,10 @@ p
   color: white;
 }
 
-.custom-tooltip {
+/* .custom-tooltip {
   --bs-tooltip-bg: var(--bd-violet-bg);
-  --bs-tooltip-color: var(--bs-white);
-}
+  --bs-tooltip-color: red;
+} */
 
 /* Ids */
 #border{
@@ -210,7 +231,7 @@ p
   left: 105%;
 }
 
-.btn:hover .tooltiptext {
+.setButton:hover .tooltiptext {
   animation: 1s fadeIn;
   animation-fill-mode: forwards;
   /* visibility: visible; */
