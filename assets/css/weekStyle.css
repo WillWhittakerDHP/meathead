@@ -86,6 +86,12 @@ p{
     font-size: 35px;
 }
 
+.btn-primary:hover {
+  color: #fff;
+  background-color: var(--secondary);
+  border-color:rgba(181, 158, 83, 0.727); /*set the color you want here*/
+}
+
 .image {
   position: relative;
 }
