@@ -8,7 +8,7 @@ let splitDesign =[
   {setsPerDay: ""},
   {repAdvice: ""}
 ];
-  let percentagesForWeightAdvice = [];
+  let percentagesForWeightAdvice = [.75, .80, .85, .90, .95];
   let oneRepMax = [
     {focusOneRepMax: ""},
     {accessoryOneRepMax: ""}
@@ -127,33 +127,43 @@ let splitDesign =[
       let containerForTheFocusExerciseButtons = document.createElement('div');
       containerForTheFocusExerciseButtons.classList.add('container','text-center');
       containerForTheFocusExerciseButtons.setAttribute("id", "cardContent");
-      containerForTheFocusExerciseButtons.setAttribute("id","buttonGrid");
-
+      containerForTheFocusExerciseButtons.setAttribute("id", "buttonGrid");
+      
       let nameOfTheFocusExercise = document.createElement('h5');
       nameOfTheFocusExercise.textContent = focusExercise;
       containerForTheFocusExerciseButtons.appendChild(nameOfTheFocusExercise);
       
       let numberOfFocusExerciseButtons = splitDesign[2].setsPerDay;
       
-      let focusButtonAtIndexMaker = function() {
-        let buttonClick = function() {   
-          if(secondsLeft === splitDesign[0].timerLengthPerDay){
-            secondsLeft--;
-            buttonAtIndex.setAttribute("disabled","true");
-            runTimer();
-          }else{
-            alertTimer();
-          }         
-          
-        };
-          
-        let buttonAtIndex = document.createElement('button');
-        buttonAtIndex.setAttribute("name", "button" + i);
-        buttonAtIndex.textContent = `Set ` + (i+1) + `: ${splitDesign[3].repAdvice} reps at ${oneRepMax[1].focusOneRepMax} lbs`;
-        buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
-        buttonAtIndex.addEventListener("click", buttonClick);
-        
-        let hoverButtonMaker = function() {
+      let focusButtonAtIndexMaker = function() { 
+        let clickNumber = [];
+        for (let p=0; p < numberOfFocusExerciseButtons; p++){
+          let containerDisabler = function() {
+            containerForTheAccessoryExerciseButtons.setAttribute("disabled", "true");
+          };
+          let buttonClick = function() {   
+            if(secondsLeft === splitDesign[0].timerLengthPerDay){
+              clickNumber.push("click");
+              secondsLeft--;
+              buttonAtIndex.setAttribute("disabled","true");
+              runTimer();
+              if (clickNumber.length >= numberOfFocusExerciseButtons) {
+                containerDisabler();
+              };     
+            }else{
+              alertTimer();
+            };
+          };
+          let buttonAtIndex = document.createElement('button');
+          buttonAtIndex.setAttribute("name", "button" + p);
+          buttonAtIndex.textContent = `Set ` + (p+1) + `: ${splitDesign[3].repAdvice} reps at ${parseFloat(oneRepMax[0].focusOneRepMax * percentagesForWeightAdvice[i]).toFixed(0)} lbs`;
+          buttonAtIndex.classList.add('btn','btn-primary','btn-sm','col-4');
+          buttonAtIndex.classList.add("position-relative");
+          buttonAtIndex.addEventListener("click", buttonClick);
+          // hoverButtonMaker();        
+          containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
+          outerContainer.appendChild(containerForTheFocusExerciseButtons);
+
           let plateCounter =[];
           let plateOrder = [45, 25, 10, 5, 2.5];
           let remainingWeight = [oneRepMax[0].focusOneRepMax - 45];
@@ -184,32 +194,19 @@ let splitDesign =[
           };
           plateCalculator();
           let hoverButtonAdvice = (`For this weight you need to add: ${platesNeeded[0]} ${plateDenomination[0]}s ${platesNeeded[1]} ${plateDenomination[1]}s ${platesNeeded[2]} ${plateDenomination[2]}s ${platesNeeded[3]} ${plateDenomination[3]}s ${platesNeeded[4]} ${plateDenomination[4]}s`);
-            let hoverButton = document.createElement('span');
-            //hoverButton.setAttribute("class", "image");
-            hoverButton.classList.add("tooltiptext");            
-            const re = /( ?undefineds? ?)+/i;
-            const regn = /\n+/i;
-            hoverButtonAdvice = hoverButtonAdvice.replace(regn , '')
-            hoverButtonAdvice = hoverButtonAdvice.trim();            
-            hoverButtonAdvice = hoverButtonAdvice.replace(re, '')
-            hoverButton.textContent = hoverButtonAdvice;
-            //hoverButton.setAttribute("title", hoverButtonAdvice);
-            //hoverButton.setAttribute("alt","");
-            //buttonAtIndex.appendChild(hoverButton);
-            //buttonAtIndex.classList.add("tooltip");
-            buttonAtIndex.classList.add("position-relative");
-            containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
-            buttonAtIndex.appendChild(hoverButton);
-            return buttonAtIndex;
+          let hoverButton = document.createElement('span');
+          hoverButton.classList.add("tooltiptext");            
+          const re = /( ?undefineds? ?)+/i;
+          const regn = /\n+/i;
+          hoverButtonAdvice = hoverButtonAdvice.replace(regn , '')
+          hoverButtonAdvice = hoverButtonAdvice.trim();            
+          hoverButtonAdvice = hoverButtonAdvice.replace(re, '')
+          hoverButton.textContent = hoverButtonAdvice;
+          buttonAtIndex.appendChild(hoverButton);
           };
-          hoverButtonMaker();        
-          outerContainer.appendChild(containerForTheFocusExerciseButtons);
-          // containerForTheFocusExerciseButtons.appendChild(buttonAtIndex);
-        };
-      for (let i=0; i < numberOfFocusExerciseButtons; i++)
-        {
-          focusButtonAtIndexMaker();
-        };
+
+        
+      };
         focusButtonAtIndexMaker();
           // End Focus Exercise Button Container
         
@@ -323,6 +320,80 @@ let splitDesign =[
       };
     };
     
+    
+    function alertTimer(){
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+      
+      let modalDialog = document.createElement('div');
+      modalDialog.classList.add('modal-dialog');
+      
+      let modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+      
+      let modalHeader = document.createElement('div');
+      modalHeader.classList.add('modal-header');
+      
+      let modalTitle = document.createElement('h5');
+      modalTitle.classList.add('modal-title');
+      modalTitle.textContent = "Timer is Running.";
+      
+      let X = document.createElement('button');
+      X.classList.add('btn-close');
+      X.setAttribute("type", "button");
+      X.setAttribute("data-bs-dismiss", "modal");
+      X.setAttribute("aria-label", "Close"); 
+      
+      let modalBody = document.createElement('div');
+      modalBody.classList.add('modal-body');
+      
+      let modalTextContent = document.createElement('p');
+      modalTextContent.style.fontSize = "15px"
+      modalTextContent.textContent = "Are you sure you want to move on to the next exercise?";
+      
+      let modalFooter = document.createElement('div');
+      modalFooter.classList.add('modal-footer');
+      
+      let modalNo = document.createElement('button');
+      modalNo.classList.add('btn','btn-primary');
+      modalNo.setAttribute("data-bs-dismiss", "modal");
+      modalNo.textContent = "Close";
+      
+      let modalMoveOn = document.createElement('button');
+      modalMoveOn.classList.add('btn','btn-danger');
+      modalMoveOn.setAttribute("data-bs-dismiss", "modal");
+      modalMoveOn.textContent = "Move On";
+      
+      //let modalFooter = document.createElement('div');
+      //modalFooter.classList.add('modal-footer');
+      
+      modal.appendChild(modalDialog);
+      modalDialog.appendChild(modalContent);  
+      
+      modalContent.appendChild(modalHeader);
+      modalHeader.appendChild(modalTitle);
+      modalHeader.appendChild(X);
+      
+      modalContent.appendChild(modalBody);
+      modalBody.appendChild(modalTextContent);
+      //modal.appendChild(modalFooter);
+      
+      modalContent.appendChild(modalFooter);
+      modalFooter.appendChild(modalNo);
+      modalFooter.appendChild(modalMoveOn);
+      
+      modalMoveOn.addEventListener("click", function (e){
+        stopTimer = true;
+      });
+      
+      var myModal = new bootstrap.Modal(modal, {
+        keyboard: false
+      })
+      myModal.show()
+      
+      
+    }
+    
     function init() {
       setValues();
       cardColumnCreator(); 
@@ -330,76 +401,3 @@ let splitDesign =[
     };
     
     init();
-
-    function alertTimer(){
-      let modal = document.createElement('div');
-      modal.classList.add('modal');
-    
-      let modalDialog = document.createElement('div');
-      modalDialog.classList.add('modal-dialog');
-    
-      let modalContent = document.createElement('div');
-      modalContent.classList.add('modal-content');
-    
-      let modalHeader = document.createElement('div');
-      modalHeader.classList.add('modal-header');
-    
-      let modalTitle = document.createElement('h5');
-      modalTitle.classList.add('modal-title');
-      modalTitle.textContent = "Timer is Running.";
-    
-      let X = document.createElement('button');
-      X.classList.add('btn-close');
-      X.setAttribute("type", "button");
-      X.setAttribute("data-bs-dismiss", "modal");
-      X.setAttribute("aria-label", "Close"); 
-    
-      let modalBody = document.createElement('div');
-      modalBody.classList.add('modal-body');
-    
-      let modalTextContent = document.createElement('p');
-      modalTextContent.style.fontSize = "15px"
-      modalTextContent.textContent = "Are you sure you want to move on to the next exercise?";
-
-      let modalFooter = document.createElement('div');
-      modalFooter.classList.add('modal-footer');
-
-      let modalNo = document.createElement('button');
-      modalNo.classList.add('btn','btn-primary');
-      modalNo.setAttribute("data-bs-dismiss", "modal");
-      modalNo.textContent = "Close";
-
-      let modalMoveOn = document.createElement('button');
-      modalMoveOn.classList.add('btn','btn-danger');
-      modalMoveOn.setAttribute("data-bs-dismiss", "modal");
-      modalMoveOn.textContent = "Move On";
-
-      //let modalFooter = document.createElement('div');
-      //modalFooter.classList.add('modal-footer');
-    
-      modal.appendChild(modalDialog);
-      modalDialog.appendChild(modalContent);  
-    
-      modalContent.appendChild(modalHeader);
-      modalHeader.appendChild(modalTitle);
-      modalHeader.appendChild(X);
-    
-      modalContent.appendChild(modalBody);
-      modalBody.appendChild(modalTextContent);
-      //modal.appendChild(modalFooter);
-    
-      modalContent.appendChild(modalFooter);
-      modalFooter.appendChild(modalNo);
-      modalFooter.appendChild(modalMoveOn);
-
-      modalMoveOn.addEventListener("click", function (e){
-        stopTimer = true;
-      });
-
-      var myModal = new bootstrap.Modal(modal, {
-        keyboard: false
-      })
-      myModal.show()
-
-      
-    }
