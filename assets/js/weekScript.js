@@ -257,20 +257,22 @@ let splitDesign =[
       let numberOfAccessoryExerciseButtons = 3;
       
       let accessoryButtonAtIndexMaker = function() {
-        let buttonClick = function() {
-          buttonAtIndex.setAttribute("disabled","true");
-        };
         
         
         for (let m=0; m < numberOfAccessoryExerciseButtons; m++)
           {
-          let buttonAtIndex = document.createElement('button');
-          buttonAtIndex.setAttribute("name", "button" + m);
-          buttonAtIndex.textContent = `Set ` + (m+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
-          buttonAtIndex.setAttribute("class", "setButton")
-          buttonAtIndex.classList.add('btn','btn-sm','col-4');
-          buttonAtIndex.addEventListener("click", buttonClick);
-          containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
+            let buttonAtIndex = document.createElement('button');
+            buttonAtIndex.setAttribute("name", "button" + m);
+            buttonAtIndex.textContent = `Set ` + (m+1) + `: 5 reps at ${oneRepMax[1].accessoryOneRepMax} lbs`;
+            buttonAtIndex.setAttribute("class", "setButton")
+            buttonAtIndex.classList.add('btn','btn-sm','col-4');
+
+            let buttonClick = function() {
+              buttonAtIndex.setAttribute("disabled","true");
+            };
+
+            buttonAtIndex.addEventListener("click", buttonClick);
+            containerForTheAccessoryExerciseButtons.appendChild(buttonAtIndex);
           outerContainer.appendChild(containerForTheAccessoryExerciseButtons);
           };
         };
